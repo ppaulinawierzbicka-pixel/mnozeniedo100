@@ -1,1 +1,1 @@
-tabliczka mnozenia do 100
+Kliknij tutaj aby przejść
