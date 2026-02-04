@@ -50,6 +50,18 @@ input[type=number]{font-size:18px;padding:8px;width:100px}
   <button onclick="location.reload()">Menu</button>
 </div>
 
+  <div id="revision" class="hidden">
+  <h2>🔁 Powtórka trudnych zadań</h2>
+  <h3 id="revQuestion"></h3>
+  <div class="answers" id="revAnswers"></div>
+  <div id="revInputBox" class="hidden">
+    <input type="number" id="revInput" />
+    <button onclick="checkRevisionInput()">OK</button>
+  </div>
+  <p id="revInfo"></p>
+  <button onclick="location.reload()">Menu</button>
+</div>
+
 <div id="quiz" class="hidden">
   <h2>Kartkówka (20 zadań / 15 minut)</h2>
   <div id="quizQuestion"></div>
@@ -59,6 +71,8 @@ input[type=number]{font-size:18px;padding:8px;width:100px}
 </div>
 
 <script>
+let revisionTasks = [];
+let revIndex = 0;
 let a,b,correct,mode,startTime,points=0;
 let wrongStats={};
 
@@ -93,23 +107,33 @@ function nextTask(){
 function check(ans){
   let t=(Date.now()-startTime)/1000;
   document.getElementById('time').innerText=t.toFixed(1);
-  if(ans===correct){points++;}
-  else{let k=`${a}x${b}`;wrongStats[k]=(wrongStats[k]||0)+1;}
-  document.getElementById('points').innerText=points;
+ if(ans === correct){
+  points++;
+  document.getElementById('points').innerText = points;
   setTimeout(nextTask,300);
+} else {
+  let k = [a, b, correct];
+  revisionTasks.push(k);
+  alert("❌ Błąd. Spróbuj jeszcze raz!");
 }
 
-function checkInput(){let v=parseInt(document.getElementById('userInput').value);document.getElementById('userInput').value='';check(v);}
+function checkInput(){
+  let v = parseInt(document.getElementById('userInput').value);
+  document.getElementById('userInput').value = '';
+  check(v);
+}
 
 function endGame(){
   document.getElementById('game').classList.add('hidden');
-  document.getElementById('summary').classList.remove('hidden');
-  let hard=Object.entries(wrongStats).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  document.getElementById('stats').innerHTML=
-    `<p>Poprawne odpowiedzi: ${points}</p>`+
-    `<p>Najtrudniejsze zadania:</p><ul>`+
-    hard.map(h=>`<li>${h[0]} – ${h[1]} błędy</li>`).join('')+
-    `</ul>`;
+
+  if(revisionTasks.length === 0){
+    document.getElementById('summary').classList.remove('hidden');
+    document.getElementById('stats').innerHTML =
+      `<p>🎉 Świetnie! Brak trudnych zadań.</p>
+       <p>Poprawne odpowiedzi: ${points}</p>`;
+  } else {
+    startRevision();
+  }
 }
 
 function startQuiz(){
@@ -137,6 +161,58 @@ function endQuiz(){
     `<p>Czas: ${((Date.now()-quizStart)/60000).toFixed(1)} min</p>`+
     `<button onclick=\"location.reload()\">Menu</button>`;
 }
+  unction startRevision(){
+  document.getElementById('revision').classList.remove('hidden');
+  revIndex = 0;
+  showRevision();
+}
+
+function showRevision(){
+  if(revIndex >= revisionTasks.length){
+    document.getElementById('revInfo').innerText = "✅ Powtórka zakończona!";
+    document.getElementById('revQuestion').innerText = "";
+    return;
+  }
+
+  let [x,y,res] = revisionTasks[revIndex];
+  document.getElementById('revQuestion').innerText = `${x} × ${y} = ?`;
+  document.getElementById('revAnswers').innerHTML = '';
+  document.getElementById('revInputBox').classList.add('hidden');
+
+  if(mode === 'tiles'){
+    let opts=[res];
+    while(opts.length<4){
+      let r=Math.ceil(Math.random()*100);
+      if(!opts.includes(r)) opts.push(r);
+    }
+    opts.sort(()=>Math.random()-0.5);
+    opts.forEach(o=>{
+      let btn=document.createElement('button');
+      btn.innerText=o;
+      btn.onclick=()=>checkRevision(o);
+      document.getElementById('revAnswers').appendChild(btn);
+    });
+  } else {
+    document.getElementById('revInputBox').classList.remove('hidden');
+  }
+}
+
+function checkRevision(ans){
+  let [,,res] = revisionTasks[revIndex];
+  if(ans === res){
+    revIndex++;
+    showRevision();
+  } else {
+    alert("❌ Nadal błąd – spróbuj jeszcze raz");
+  }
+}
+
+function checkRevisionInput(){
+  let v = parseInt(document.getElementById('revInput').value);
+  document.getElementById('revInput').value='';
+  checkRevision(v);
+}
 </script>
 </body>
 </html>
+
