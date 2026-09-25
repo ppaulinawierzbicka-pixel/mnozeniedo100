@@ -3,1998 +3,1142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Nauka – matematyka, angielski i przyroda</title>
+<title>Strefa Nauki</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f3f7f1;
-    color: #243024;
-}
-
-header {
-    background: #2e7d32;
-    color: white;
-    text-align: center;
-    padding: 25px 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-}
-
-header h1 {
-    margin: 0 0 8px;
-    font-size: 32px;
-}
-
-header p {
-    margin: 0;
-    font-size: 17px;
-}
-
-main {
-    max-width: 1100px;
-    margin: 25px auto;
-    padding: 0 15px;
-}
-
-.section-title {
-    text-align: center;
-    margin: 10px 0 20px;
-    color: #2e7d32;
-}
-
-.main-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-}
-
-.card {
-    background: white;
-    border-radius: 18px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-    text-align: center;
-}
-
-.card h2 {
-    margin-top: 0;
-}
-
-.card p {
-    color: #555;
-    line-height: 1.5;
-}
-
-button {
-    border: none;
-    border-radius: 12px;
-    padding: 13px 18px;
-    margin: 6px;
-    font-size: 17px;
-    cursor: pointer;
-    background: #43a047;
-    color: white;
-    transition: 0.2s;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    background: #2e7d32;
-}
-
-button:disabled {
-    opacity: 0.6;
-    cursor: default;
-    transform: none;
-}
-
-.secondary {
-    background: #607d8b;
-}
-
-.secondary:hover {
-    background: #455a64;
-}
-
-.blue {
-    background: #1976d2;
-}
-
-.blue:hover {
-    background: #0d47a1;
-}
-
-.purple {
-    background: #7b1fa2;
-}
-
-.purple:hover {
-    background: #4a148c;
-}
-
-.forest {
-    background: #558b2f;
-}
-
-.forest:hover {
-    background: #33691e;
-}
-
-.video-button {
-    background: #e53935;
-}
-
-.video-button:hover {
-    background: #b71c1c;
-}
-
-.hidden {
-    display: none;
-}
-
-.panel {
-    background: white;
-    border-radius: 18px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.question {
-    font-size: 34px;
-    font-weight: bold;
-    margin: 25px 0;
-}
-
-.answers {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 750px;
-    margin: 0 auto;
-    gap: 10px;
-}
-
-.answer {
-    background: #e8f5e9;
-    color: #1b5e20;
-    border: 2px solid #81c784;
-    font-size: 20px;
-    min-height: 60px;
-}
-
-.answer:hover {
-    background: #c8e6c9;
-}
-
-input[type="number"],
-input[type="text"] {
-    width: min(300px, 90%);
-    padding: 14px;
-    font-size: 22px;
-    text-align: center;
-    border: 2px solid #81c784;
-    border-radius: 10px;
-    margin: 10px;
-}
-
-.message {
-    min-height: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 15px;
-}
-
-.correct {
-    color: #2e7d32;
-}
-
-.wrong {
-    color: #c62828;
-}
-
-.score {
-    font-size: 20px;
-    margin: 15px;
-}
-
-
-/* =========================================================
-   LAS
-========================================================= */
-
-.forest-menu-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 25px;
-}
-
-.forest-mode-card {
-    background: #f1f8e9;
-    border: 2px solid #aed581;
-    border-radius: 18px;
-    padding: 25px 18px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.forest-mode-card:hover {
-    transform: translateY(-3px);
-    background: #e8f5e9;
-}
-
-.forest-mode-card .icon {
-    font-size: 45px;
-    margin-bottom: 10px;
-}
-
-.forest-mode-card h3 {
-    color: #33691e;
-    margin: 8px 0;
-}
-
-.forest-mode-card p {
-    color: #555;
-    line-height: 1.5;
-}
-
-.layer-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin-top: 25px;
-}
-
-.layer-card {
-    background: #f1f8e9;
-    border-radius: 16px;
-    padding: 22px;
-    text-align: left;
-    border-left: 7px solid #66bb6a;
-}
-
-.layer-card h3 {
-    margin-top: 0;
-    color: #33691e;
-    font-size: 23px;
-}
-
-.layer-card p {
-    line-height: 1.6;
-}
-
-.layer-card ul {
-    line-height: 1.8;
-}
-
-.layer-note {
-    background: #fff8e1;
-    border-radius: 12px;
-    padding: 15px;
-    margin-top: 20px;
-    line-height: 1.6;
-}
-
-.forest-question {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 25px 0;
-}
-
-.forest-question-small {
-    font-size: 20px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.forest-answer {
-    background: #f1f8e9;
-    color: #33691e;
-    border: 2px solid #9ccc65;
-    font-size: 19px;
-    min-height: 65px;
-}
-
-.forest-answer:hover {
-    background: #dcedc8;
-}
-
-.forest-item {
-    font-size: 30px;
-    background: #fff8e1;
-    border-radius: 15px;
-    padding: 20px;
-    display: inline-block;
-    min-width: 280px;
-    margin: 10px;
-    border: 2px solid #ffcc80;
-}
-
-.forest-type {
-    font-size: 16px;
-    color: #666;
-    margin-top: 8px;
-}
-
-.forest-layer-options {
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-
-/* =========================================================
-   FILM
-========================================================= */
-
-.video-box {
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-.video-wrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.lesson-intro {
-    max-width: 750px;
-    margin: 0 auto 20px;
-    line-height: 1.6;
-}
-
-.lesson-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin: 25px 0;
-}
-
-.lesson-step {
-    background: #fff3e0;
-    border-radius: 12px;
-    padding: 15px 10px;
-    font-weight: bold;
-}
-
-.video-question {
-    font-size: 25px;
-    font-weight: bold;
-    margin: 25px 0;
-}
-
-.sentence-box {
-    background: #e3f2fd;
-    border-radius: 15px;
-    padding: 25px;
-    margin: 20px auto;
-    max-width: 650px;
-}
-
-.sentence {
-    font-size: 28px;
-    font-weight: bold;
-    color: #1565c0;
-    margin: 10px 0 20px;
-}
-
-.speak-button {
-    background: #1565c0;
-}
-
-.speak-button:hover {
-    background: #0d47a1;
-}
-
-.badge {
-    font-size: 60px;
-    margin: 15px;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .forest-menu-grid {
-        grid-template-columns: 1fr;
+    * {
+        box-sizing: border-box;
     }
 
-    .layer-list {
-        grid-template-columns: 1fr;
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #eef7ee;
+        color: #234b2a;
     }
 
-    .lesson-steps {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-
-    .main-grid,
-    .answers {
-        grid-template-columns: 1fr;
+    header {
+        background: #2e7d32;
+        color: white;
+        text-align: center;
+        padding: 25px 15px;
     }
 
     header h1 {
-        font-size: 26px;
+        margin: 0;
+        font-size: 32px;
+    }
+
+    header p {
+        margin: 8px 0 0;
+        font-size: 17px;
+    }
+
+    main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 25px 15px 50px;
+    }
+
+    section {
+        display: none;
+    }
+
+    section.active {
+        display: block;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2e7d32;
+        margin-top: 10px;
+    }
+
+    h3 {
+        color: #2e7d32;
+    }
+
+    button {
+        border: none;
+        border-radius: 12px;
+        padding: 14px 20px;
+        font-size: 17px;
+        cursor: pointer;
+        background: #66bb6a;
+        color: white;
+        transition: transform 0.15s, background 0.15s;
+    }
+
+    button:hover {
+        background: #4caf50;
+        transform: translateY(-1px);
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    button:focus-visible {
+        outline: 3px solid #81c784;
+        outline-offset: 2px;
+    }
+
+    button:disabled {
+        cursor: default;
+        opacity: 0.8;
+    }
+
+    .main-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    .module-card {
+        background: white;
+        border-radius: 18px;
+        padding: 25px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        text-align: center;
+    }
+
+    .module-card h3 {
+        margin-top: 0;
+        font-size: 23px;
+    }
+
+    .module-card p {
+        min-height: 45px;
+        line-height: 1.5;
+    }
+
+    .sub-buttons {
+        display: grid;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .question-box {
+        background: white;
+        border-radius: 18px;
+        padding: 25px;
+        max-width: 700px;
+        margin: 25px auto;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        text-align: center;
     }
 
     .question {
-        font-size: 28px;
+        font-size: 30px;
+        font-weight: bold;
+        margin: 20px 0;
     }
 
-    .sentence {
-        font-size: 24px;
+    .answers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .answer-button {
+        background: #81c784;
+        min-height: 55px;
+    }
+
+    .answer-button:hover {
+        background: #66bb6a;
+    }
+
+    .feedback {
+        min-height: 28px;
+        margin-top: 18px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .correct {
+        color: #2e7d32;
+    }
+
+    .wrong {
+        color: #c62828;
+    }
+
+    .top-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .secondary {
+        background: #78909c;
+    }
+
+    .secondary:hover {
+        background: #607d8b;
+    }
+
+    .summary-box {
+        background: white;
+        border-radius: 18px;
+        padding: 30px;
+        max-width: 650px;
+        margin: 30px auto;
+        text-align: center;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .summary-score {
+        font-size: 36px;
+        font-weight: bold;
+        color: #2e7d32;
+        margin: 20px 0;
+    }
+
+    /* LAS */
+
+    .forest-menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 25px;
+    }
+
+    .forest-mode-card {
+        background: white;
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        text-align: center;
+    }
+
+    .forest-mode-card h3 {
+        font-size: 21px;
+        margin-top: 0;
+    }
+
+    .forest-mode-card p {
+        line-height: 1.5;
+    }
+
+    .layer-list {
+        display: grid;
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    .layer-card {
+        background: white;
+        border-radius: 18px;
+        padding: 25px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .layer-card h3 {
+        margin-top: 0;
+        font-size: 25px;
+    }
+
+    .forest-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 10px;
     }
 
     .forest-item {
-        min-width: auto;
-        width: 90%;
+        background: #f1f8f1;
+        padding: 10px;
+        border-radius: 10px;
     }
-}
 
+    .forest-answer {
+        background: #81c784;
+    }
+
+    .forest-answer:hover {
+        background: #66bb6a;
+    }
+
+    .forest-question-icon {
+        font-size: 55px;
+        margin-bottom: 5px;
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 16px;
+    }
+
+    .sentence-box {
+        background: #f1f8f1;
+        padding: 18px;
+        border-radius: 14px;
+        margin: 12px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .sentence {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 800px) {
+        .main-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .forest-menu-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .answers {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 550px) {
+        header h1 {
+            font-size: 26px;
+        }
+
+        .question {
+            font-size: 25px;
+        }
+
+        .forest-items {
+            grid-template-columns: 1fr;
+        }
+
+        .sentence-box {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
 </style>
 </head>
 
 <body>
 
 <header>
-
-    <h1>📚 Nauka</h1>
-
-    <p>
-        Matematyka, język angielski i przyroda
-    </p>
-
+    <h1>🌱 Strefa Nauki</h1>
+    <p>Ucz się, ćwicz i sprawdzaj swoje umiejętności!</p>
 </header>
-
 
 <main>
 
+    <!-- ==================== MENU ==================== -->
 
-<!-- =====================================================
-     MENU GŁÓWNE
-===================================================== -->
+    <section id="menu" class="active">
+        <h2>Wybierz, czego chcesz się pouczyć</h2>
 
-<section id="menu">
+        <div class="main-grid">
 
-    <h2 class="section-title">
-        Wybierz moduł
-    </h2>
+            <div class="module-card">
+                <h3>🧩 Tabliczka mnożenia</h3>
+                <p>Ćwicz mnożenie i poprawiaj swoje wyniki.</p>
 
-    <div class="main-grid">
+                <div class="sub-buttons">
+                    <button onclick="startGame('input')">
+                        ✏️ Wpisywanie wyniku
+                    </button>
 
+                    <button onclick="startGame('tiles')">
+                        🔲 Kafelki
+                    </button>
+                </div>
+            </div>
 
-        <!-- MATEMATYKA -->
+            <div class="module-card">
+                <h3>🇬🇧 Angielski</h3>
+                <p>Ćwicz liczby po angielsku.</p>
 
-        <div class="card">
+                <div class="sub-buttons">
+                    <button onclick="startEnglishGame('numberToWord')">
+                        🔢 Liczba → nazwa
+                    </button>
 
-            <h2>🧩 Tabliczka mnożenia</h2>
+                    <button onclick="startEnglishGame('wordToNumber')">
+                        🔤 Nazwa → liczba
+                    </button>
+                </div>
+            </div>
 
-            <p>
-                Ćwicz mnożenie od 1 × 1 do 10 × 10.
-                Wybierz sposób nauki.
-            </p>
+            <div class="module-card">
+                <h3>🌲 Warstwy lasu</h3>
+                <p>Poznaj las i sprawdź, co znajduje się w jego poszczególnych warstwach.</p>
 
-            <button onclick="startGame('input')">
-                ✏️ Wpisywanie wyniku
-            </button>
+                <div class="sub-buttons">
+                    <button onclick="showForestMenu()">
+                        🌲 Otwórz moduł
+                    </button>
+                </div>
+            </div>
 
-            <button
-                onclick="startGame('tiles')"
-                class="blue">
+            <div class="module-card">
+                <h3>🎬 Angielski z filmem</h3>
+                <p>Posłuchaj angielskiego, obejrzyj film i poćwicz zdania.</p>
 
-                🔲 Kafelki
-
-            </button>
-
-        </div>
-
-
-        <!-- ANGIELSKI -->
-
-        <div class="card">
-
-            <h2>🇬🇧 Angielski</h2>
-
-            <p>
-                Naucz się liczb od 1 do 100 po angielsku.
-            </p>
-
-            <button
-                onclick="startEnglishGame('numberToWord')"
-                class="purple">
-
-                🔢 Liczba → nazwa
-
-            </button>
-
-            <button
-                onclick="startEnglishGame('wordToNumber')"
-                class="purple">
-
-                🔤 Nazwa → liczba
-
-            </button>
+                <div class="sub-buttons">
+                    <button onclick="showVideoLesson()">
+                        ▶️ Zacznij naukę
+                    </button>
+                </div>
+            </div>
 
         </div>
+    </section>
 
 
-        <!-- LAS -->
+    <!-- ==================== MATEMATYKA ==================== -->
 
-        <div class="card">
-
-            <h2>🌲 Warstwy lasu</h2>
-
-            <p>
-                Poznaj warstwy lasu oraz naucz się
-                przyporządkowywać do nich rośliny i zwierzęta.
-            </p>
-
-            <button
-                onclick="showForestMenu()"
-                class="forest">
-
-                🌲 Wejdź do lasu
-
-            </button>
-
+    <section id="game">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showMenu()">← Menu</button>
         </div>
 
+        <h2>🧩 Tabliczka mnożenia</h2>
 
-        <!-- FILM -->
+        <div class="question-box">
+            <div id="mathProgress"></div>
+            <div id="mathQuestion" class="question"></div>
 
-        <div class="card">
+            <div id="mathInputArea"></div>
+            <div id="mathAnswers" class="answers"></div>
 
-            <h2>🎬 Angielski z filmem</h2>
-
-            <p>
-                Obejrzyj krótki materiał po angielsku,
-                posłuchaj zdań i sprawdź, ile rozumiesz.
-            </p>
-
-            <button
-                onclick="startVideoLesson()"
-                class="video-button">
-
-                🎬 Rozpocznij misję
-
-            </button>
-
+            <div id="mathFeedback" class="feedback"></div>
         </div>
-
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- ==================== POWTÓRKA MATEMATYKA ==================== -->
 
-<!-- =====================================================
-     MATEMATYKA
-===================================================== -->
-
-<section id="game" class="hidden">
-
-    <div class="panel">
-
-        <h2 id="gameTitle">
-            🧩 Tabliczka mnożenia
-        </h2>
-
-        <div class="score">
-
-            Pytanie:
-            <span id="questionNumber">1</span>
-            /
-            <span id="totalQuestions">10</span>
-
+    <section id="revision">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showMenu()">← Menu</button>
         </div>
-
-        <div
-            class="question"
-            id="question">
-        </div>
-
-
-        <div
-            id="tileAnswers"
-            class="answers">
-        </div>
-
-
-        <div
-            id="inputAnswer"
-            class="hidden">
-
-            <input
-                type="number"
-                id="answerInput"
-                placeholder="Wpisz wynik">
-
-            <br>
-
-            <button onclick="checkInputAnswer()">
-                Sprawdź
-            </button>
-
-        </div>
-
-
-        <div
-            id="message"
-            class="message">
-        </div>
-
-
-        <button
-            onclick="finishGame()"
-            class="secondary">
-
-            Zakończ grę
-
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     POWTÓRKA MATEMATYKI
-===================================================== -->
-
-<section id="revision" class="hidden">
-
-    <div class="panel">
 
         <h2>🔁 Powtórka</h2>
 
-        <p>
-            Powtórz zadania, które sprawiły trudność.
-        </p>
+        <div class="question-box">
+            <div id="revisionProgress"></div>
+            <div id="revisionQuestion" class="question"></div>
 
-        <div
-            class="question"
-            id="revisionQuestion">
+            <input
+                id="revisionInput"
+                type="number"
+                placeholder="Wpisz wynik"
+                style="padding:14px;font-size:20px;border-radius:10px;border:1px solid #aaa;width:100%;max-width:300px;"
+            >
+
+            <br><br>
+
+            <button onclick="checkRevision()">Sprawdź</button>
+
+            <div id="revisionFeedback" class="feedback"></div>
+        </div>
+    </section>
+
+
+    <!-- ==================== ANGIELSKI ==================== -->
+
+    <section id="englishGame">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showMenu()">← Menu</button>
         </div>
 
-        <input
-            type="number"
-            id="revisionInput"
-            placeholder="Wpisz wynik">
+        <h2>🇬🇧 Angielski – liczby</h2>
 
-        <br>
+        <div class="question-box">
+            <div id="englishProgress"></div>
+            <div id="englishQuestion" class="question"></div>
 
-        <button onclick="checkRevision()">
-            Sprawdź
-        </button>
+            <div id="englishAnswers" class="answers"></div>
 
-        <div
-            id="revisionMessage"
-            class="message">
+            <div id="englishFeedback" class="feedback"></div>
+        </div>
+    </section>
+
+
+    <!-- ==================== POWTÓRKA ANGIELSKI ==================== -->
+
+    <section id="englishRevision">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showMenu()">← Menu</button>
         </div>
 
-    </div>
+        <h2>🔁 Powtórka z angielskiego</h2>
 
-</section>
+        <div class="question-box">
+            <div id="englishRevisionProgress"></div>
+            <div id="englishRevisionQuestion" class="question"></div>
+
+            <div id="englishRevisionAnswers" class="answers"></div>
+
+            <div id="englishRevisionFeedback" class="feedback"></div>
+        </div>
+    </section>
 
 
+    <!-- ==================== LAS MENU ==================== -->
 
-<!-- =====================================================
-     ANGIELSKI – LICZBY
-===================================================== -->
-
-<section id="englishGame" class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            🇬🇧 Liczby po angielsku
-        </h2>
-
-        <div class="score">
-
-            Pytanie:
-            <span id="englishQuestionNumber">1</span>
-            /
-            <span id="englishTotalQuestions">10</span>
-
+    <section id="forestMenu">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showMenu()">← Menu główne</button>
         </div>
 
-        <div
-            class="question"
-            id="englishQuestion">
-        </div>
-
-        <div
-            id="englishAnswers"
-            class="answers">
-        </div>
-
-        <div
-            id="englishMessage"
-            class="message">
-        </div>
-
-        <button
-            onclick="finishEnglishGame()"
-            class="secondary">
-
-            Zakończ
-
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     POWTÓRKA ANGIELSKIEGO
-===================================================== -->
-
-<section id="englishRevision" class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            🔁 Powtórka – angielski
-        </h2>
-
-        <div
-            class="question"
-            id="englishRevisionQuestion">
-        </div>
-
-        <div
-            id="englishRevisionAnswers"
-            class="answers">
-        </div>
-
-        <div
-            id="englishRevisionMessage"
-            class="message">
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LAS – MENU 3 KAFELKI
-===================================================== -->
-
-<section id="forestMenu" class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            🌲 Warstwy lasu
-        </h2>
-
-        <p>
-            Wybierz, czego chcesz się nauczyć.
-        </p>
-
+        <h2>🌲 Warstwy lasu</h2>
 
         <div class="forest-menu-grid">
 
-
-            <!-- KAFELEK 1 -->
-
-            <div
-                class="forest-mode-card"
-                onclick="showForestKnowledge()">
-
-                <div class="icon">
-                    🌲
-                </div>
-
-                <h3>
-                    Poznaj warstwy lasu
-                </h3>
-
+            <div class="forest-mode-card">
+                <div class="forest-question-icon">🌲</div>
+                <h3>Poznaj warstwy lasu</h3>
                 <p>
-                    Dowiedz się, czym są korony drzew,
-                    podszyt, runo leśne i ściółka.
+                    Dowiedz się, jakie rośliny, zwierzęta i inne elementy
+                    znajdziemy w poszczególnych warstwach lasu.
                 </p>
 
+                <button onclick="showForestKnowledge()">
+                    Poznaj
+                </button>
             </div>
 
-
-            <!-- KAFELEK 2 -->
-
-            <div
-                class="forest-mode-card"
-                onclick="startForestOrganismQuiz()">
-
-                <div class="icon">
-                    🐾
-                </div>
-
-                <h3>
-                    Co mieszka w tej warstwie?
-                </h3>
-
+            <div class="forest-mode-card">
+                <div class="forest-question-icon">🐾</div>
+                <h3>Co mieszka w tej warstwie?</h3>
                 <p>
-                    Zobacz roślinę lub zwierzę
-                    i wybierz odpowiednią warstwę lasu.
+                    Zobaczysz roślinę lub zwierzę i wybierzesz warstwę lasu,
+                    do której najlepiej pasuje.
                 </p>
 
+                <button onclick="startForestOrganismQuiz()">
+                    Zagraj
+                </button>
             </div>
 
-
-            <!-- KAFELEK 3 -->
-
-            <div
-                class="forest-mode-card"
-                onclick="startForestLayerQuiz()">
-
-                <div class="icon">
-                    🔎
-                </div>
-
-                <h3>
-                    Co znajdziemy w tej warstwie?
-                </h3>
-
+            <div class="forest-mode-card">
+                <div class="forest-question-icon">🔎</div>
+                <h3>Co znajdziemy w tej warstwie?</h3>
                 <p>
-                    Zobacz warstwę lasu i wybierz
-                    pasujące rośliny lub zwierzęta.
+                    Zobaczysz warstwę lasu i wybierzesz organizm,
+                    który w niej znajdziemy.
                 </p>
 
+                <button onclick="startForestLayerQuiz()">
+                    Zagraj
+                </button>
             </div>
 
         </div>
+    </section>
 
 
-        <br>
+    <!-- ==================== WIEDZA O LESIE ==================== -->
 
-        <button
-            onclick="showMenu()"
-            class="secondary">
+    <section id="forestKnowledge">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showForestMenu()">← Warstwy lasu</button>
+        </div>
 
-            ⬅️ Menu główne
-
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LAS – POZNAJ WARSTWY
-===================================================== -->
-
-<section
-    id="forestKnowledge"
-    class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            🌲 Poznaj warstwy lasu
-        </h2>
-
-        <p>
-            Las możemy podzielić na cztery główne warstwy.
-            Każda z nich ma inne warunki i żyją w niej
-            różne organizmy.
-        </p>
-
+        <h2>🌲 Poznaj warstwy lasu</h2>
 
         <div class="layer-list">
 
-
-            <!-- KORONY -->
-
             <div class="layer-card">
-
-                <h3>
-                    🌳 1. Korony drzew
-                </h3>
+                <h3>🌳 Korony drzew</h3>
 
                 <p>
-                    To najwyższa warstwa lasu.
-                    Tworzą ją korony wysokich, dorosłych drzew.
+                    To najwyższa warstwa lasu. Tworzą ją korony drzew,
+                    które potrzebują dużo światła.
                 </p>
 
-                <strong>
-                    🌱 Rośliny:
-                </strong>
+                <strong>🌿 Rośliny i drzewa:</strong>
 
-                <ul>
+                <div class="forest-items">
+                    <div class="forest-item">Dąb</div>
+                    <div class="forest-item">Buk</div>
+                    <div class="forest-item">Sosna</div>
+                    <div class="forest-item">Świerk</div>
+                    <div class="forest-item">Brzoza</div>
+                    <div class="forest-item">Modrzew</div>
+                </div>
 
-                    <li>Dąb</li>
-                    <li>Buk</li>
-                    <li>Sosna</li>
-                    <li>Świerk</li>
-                    <li>Brzoza</li>
-                    <li>Modrzew</li>
+                <br>
 
-                </ul>
+                <strong>🐦 Zwierzęta:</strong>
 
-                <strong>
-                    🐾 Zwierzęta:
-                </strong>
-
-                <ul>
-
-                    <li>Dzięcioł</li>
-                    <li>Sójka</li>
-                    <li>Kowalik</li>
-                    <li>Puszczyk</li>
-                    <li>Wiewiórka</li>
-
-                </ul>
-
+                <div class="forest-items">
+                    <div class="forest-item">Dzięcioł</div>
+                    <div class="forest-item">Sójka</div>
+                    <div class="forest-item">Kowalik</div>
+                    <div class="forest-item">Puszczyk</div>
+                    <div class="forest-item">Wiewiórka</div>
+                </div>
             </div>
 
-
-            <!-- PODSZYT -->
 
             <div class="layer-card">
-
-                <h3>
-                    🌿 2. Podszyt
-                </h3>
+                <h3>🌿 Podszyt</h3>
 
                 <p>
-                    To warstwa krzewów i młodych drzew,
-                    znajdująca się pod koronami drzew.
+                    To warstwa krzewów i młodych drzew znajdująca się
+                    pod koronami drzew.
                 </p>
 
-                <strong>
-                    🌱 Rośliny:
-                </strong>
+                <strong>🌿 Rośliny:</strong>
 
-                <ul>
+                <div class="forest-items">
+                    <div class="forest-item">Jarzębina</div>
+                    <div class="forest-item">Jałowiec</div>
+                    <div class="forest-item">Leszczyna</div>
+                    <div class="forest-item">Głóg</div>
+                    <div class="forest-item">Kalina</div>
+                    <div class="forest-item">Dzika róża</div>
+                </div>
 
-                    <li>Jarzębina (jarząb pospolity)</li>
-                    <li>Jałowiec</li>
-                    <li>Leszczyna</li>
-                    <li>Głóg</li>
-                    <li>Kalina</li>
-                    <li>Dzika róża</li>
+                <br>
 
-                </ul>
+                <strong>🐾 Zwierzęta:</strong>
 
-                <strong>
-                    🐾 Zwierzęta:
-                </strong>
-
-                <ul>
-
-                    <li>Sarna</li>
-                    <li>Dzik</li>
-                    <li>Lis</li>
-                    <li>Kos</li>
-                    <li>Rudzik</li>
-
-                </ul>
-
+                <div class="forest-items">
+                    <div class="forest-item">Sarna</div>
+                    <div class="forest-item">Dzik</div>
+                    <div class="forest-item">Lis</div>
+                    <div class="forest-item">Kos</div>
+                    <div class="forest-item">Rudzik</div>
+                </div>
             </div>
 
-
-            <!-- RUNO -->
 
             <div class="layer-card">
-
-                <h3>
-                    🍄 3. Runo leśne
-                </h3>
+                <h3>🌱 Runo leśne</h3>
 
                 <p>
-                    To niska warstwa roślinności.
-                    Znajdziemy tu m.in. paprocie, mchy,
-                    borówki i inne niskie rośliny.
-                    Do runa zaliczamy również grzyby.
+                    To warstwa roślin zielnych, mchów, paproci,
+                    grzybów i innych organizmów znajdujących się
+                    blisko ziemi.
                 </p>
 
-                <strong>
-                    🌱 Rośliny i grzyby:
-                </strong>
+                <strong>🌿 Rośliny i grzyby:</strong>
 
-                <ul>
+                <div class="forest-items">
+                    <div class="forest-item">Paproć</div>
+                    <div class="forest-item">Mech</div>
+                    <div class="forest-item">Borówka czarna</div>
+                    <div class="forest-item">Borówka brusznica</div>
+                    <div class="forest-item">Wrzos</div>
+                    <div class="forest-item">Konwalia majowa</div>
+                    <div class="forest-item">Grzyby</div>
+                </div>
 
-                    <li>Paproć</li>
-                    <li>Mech</li>
-                    <li>Borówka czarna</li>
-                    <li>Borówka brusznica</li>
-                    <li>Wrzos</li>
-                    <li>Konwalia majowa</li>
-                    <li>Grzyby</li>
+                <br>
 
-                </ul>
+                <strong>🐾 Zwierzęta:</strong>
 
-                <strong>
-                    🐾 Zwierzęta:
-                </strong>
-
-                <ul>
-
-                    <li>Jeż</li>
-                    <li>Zając</li>
-                    <li>Żaba</li>
-                    <li>Ropucha</li>
-                    <li>Jaszczurka</li>
-
-                </ul>
-
+                <div class="forest-items">
+                    <div class="forest-item">Jeż</div>
+                    <div class="forest-item">Zając</div>
+                    <div class="forest-item">Żaba</div>
+                    <div class="forest-item">Ropucha</div>
+                    <div class="forest-item">Jaszczurka</div>
+                </div>
             </div>
 
-
-            <!-- ŚCIÓŁKA -->
 
             <div class="layer-card">
-
-                <h3>
-                    🍂 4. Ściółka
-                </h3>
+                <h3>🍂 Ściółka</h3>
 
                 <p>
-                    To warstwa znajdująca się na powierzchni
-                    gleby. Tworzą ją m.in. opadłe liście,
-                    igły, gałązki i inne szczątki organiczne.
+                    To najniższa warstwa lasu. Tworzą ją między innymi
+                    opadłe liście, igły, gałązki i fragmenty kory.
                 </p>
 
-                <strong>
-                    🍂 Co znajdziemy?
-                </strong>
+                <strong>🍂 Co tworzy ściółkę?</strong>
 
-                <ul>
+                <div class="forest-items">
+                    <div class="forest-item">Opadłe liście</div>
+                    <div class="forest-item">Igły drzew</div>
+                    <div class="forest-item">Gałązki</div>
+                    <div class="forest-item">Kawałki kory</div>
+                    <div class="forest-item">Szyszki</div>
+                </div>
 
-                    <li>Opadłe liście</li>
-                    <li>Igły drzew</li>
-                    <li>Gałązki</li>
-                    <li>Kawałki kory</li>
-                    <li>Szyszki</li>
+                <br>
 
-                </ul>
+                <strong>🐜 Zwierzęta:</strong>
 
-                <strong>
-                    🐾 Zwierzęta i organizmy:
-                </strong>
-
-                <ul>
-
-                    <li>Dżdżownica</li>
-                    <li>Stonoga</li>
-                    <li>Krocionóg</li>
-                    <li>Mrówka</li>
-                    <li>Żuk</li>
-
-                </ul>
-
+                <div class="forest-items">
+                    <div class="forest-item">Dżdżownica</div>
+                    <div class="forest-item">Stonoga</div>
+                    <div class="forest-item">Krocionóg</div>
+                    <div class="forest-item">Mrówka</div>
+                    <div class="forest-item">Żuk</div>
+                </div>
             </div>
 
         </div>
 
+        <div class="question-box">
+            <p>
+                💡 <strong>Zapamiętaj:</strong>
+                warstwy lasu nie są idealnie oddzielone.
+                Niektóre zwierzęta mogą korzystać z kilku warstw.
+                W ćwiczeniach wybieramy przykłady charakterystyczne
+                dla danej warstwy.
+            </p>
+        </div>
+    </section>
 
-        <div class="layer-note">
 
-            💡 <strong>Ważne!</strong>
-            W prawdziwym lesie warstwy nie są od siebie
-            idealnie odcięte. Niektóre zwierzęta mogą
-            korzystać z kilku warstw. W naszych ćwiczeniach
-            wybieramy jednak przykłady najbardziej
-            charakterystyczne dla danej warstwy.
+    <!-- ==================== QUIZ ORGANIZM → WARSTWA ==================== -->
 
+    <section id="forestOrganismQuiz">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showForestMenu()">← Warstwy lasu</button>
         </div>
 
+        <h2>🐾 Co mieszka w tej warstwie?</h2>
 
-        <br>
+        <div class="question-box">
 
-        <button
-            onclick="showForestMenu()"
-            class="secondary">
+            <div id="forestOrganismProgress"></div>
 
-            ⬅️ Wróć
-
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LAS – ZWIERZĘ / ROŚLINA → WARSTWA
-===================================================== -->
-
-<section
-    id="forestOrganismQuiz"
-    class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            🐾 Co mieszka w tej warstwie?
-        </h2>
-
-        <div class="score">
-
-            Pytanie:
-            <span id="forestOrganismNumber">1</span>
-            /
-            <span id="forestOrganismTotal">12</span>
-
-        </div>
-
-
-        <p class="forest-question-small">
-            Do której warstwy pasuje:
-        </p>
-
-
-        <div class="forest-item">
-
-            <div id="forestOrganismIcon">
-                🌱
-            </div>
-
-            <div id="forestOrganismName">
-            </div>
-
-            <div
-                id="forestOrganismType"
-                class="forest-type">
-            </div>
-
-        </div>
-
-
-        <div
-            id="forestOrganismAnswers"
-            class="answers forest-layer-options">
-        </div>
-
-
-        <div
-            id="forestOrganismMessage"
-            class="message">
-        </div>
-
-
-        <button
-            onclick="showForestMenu()"
-            class="secondary">
-
-            ⬅️ Zakończ
-
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LAS – WARSTWA → ORGANIZM
-===================================================== -->
-
-<section
-    id="forestLayerQuiz"
-    class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            🔎 Co znajdziemy w tej warstwie?
-        </h2>
-
-        <div class="score">
-
-            Pytanie:
-            <span id="forestLayerQuizNumber">1</span>
-            /
-            <span id="forestLayerQuizTotal">12</span>
-
-        </div>
-
-
-        <p class="forest-question-small">
-            Który organizm pasuje do:
-        </p>
-
-
-        <div class="forest-item">
-
-            <div id="forestLayerIcon">
+            <div class="forest-question-icon" id="forestOrganismIcon">
                 🌲
             </div>
 
-            <div id="forestLayerQuizName">
-            </div>
+            <div id="forestOrganismQuestion" class="question"></div>
 
+            <div id="forestOrganismAnswers" class="answers"></div>
+
+            <div id="forestOrganismFeedback" class="feedback"></div>
+        </div>
+    </section>
+
+
+    <!-- ==================== QUIZ WARSTWA → ORGANIZM ==================== -->
+
+    <section id="forestLayerQuiz">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showForestMenu()">← Warstwy lasu</button>
         </div>
 
+        <h2>🔎 Co znajdziemy w tej warstwie?</h2>
 
-        <div
-            id="forestLayerAnswers"
-            class="answers forest-layer-options">
-        </div>
+        <div class="question-box">
 
+            <div id="forestLayerProgress"></div>
 
-        <div
-            id="forestLayerMessage"
-            class="message">
-        </div>
-
-
-        <button
-            onclick="showForestMenu()"
-            class="secondary">
-
-            ⬅️ Zakończ
-
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FILM – LEKCJA
-===================================================== -->
-
-<section
-    id="videoLesson"
-    class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            🎬 English Mission #1
-        </h2>
-
-        <h3>
-            🦁 Let's Go To The Zoo
-        </h3>
-
-        <div class="lesson-intro">
-
-            <p>
-                Obejrzyj film i zwróć uwagę na to,
-                jakie zwierzęta pojawiają się w piosence
-                i co robią.
-            </p>
-
-            <p>
-                <strong>
-                    Nie musisz rozumieć każdego słowa.
-                </strong>
-                Spróbuj złapać sens!
-            </p>
-
-        </div>
-
-
-        <div class="lesson-steps">
-
-            <div class="lesson-step">
-                🎥<br>
-                Obejrzyj
+            <div class="forest-question-icon" id="forestLayerIcon">
+                🌲
             </div>
 
-            <div class="lesson-step">
-                👂<br>
-                Posłuchaj
-            </div>
+            <div id="forestLayerQuestion" class="question"></div>
 
-            <div class="lesson-step">
-                🧩<br>
-                Sprawdź
-            </div>
+            <div id="forestLayerAnswers" class="answers"></div>
 
-            <div class="lesson-step">
-                🗣️<br>
-                Powiedz
-            </div>
+            <div id="forestLayerFeedback" class="feedback"></div>
+        </div>
+    </section>
 
+
+    <!-- ==================== VIDEO ==================== -->
+
+    <section id="videoLesson">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showMenu()">← Menu</button>
         </div>
 
+        <h2>🎬 Angielski z filmem</h2>
 
-        <div class="video-box">
-
-            <div class="video-wrapper">
-
-                <iframe
-                    src="https://www.youtube.com/embed/OwRmivbNgQk"
-                    title="Let's Go To The Zoo"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe>
-
-            </div>
-
-        </div>
-
-
-        <p>
-            🎬 Obejrzyj film spokojnie.
-            Kiedy skończysz, kliknij:
+        <p style="text-align:center;">
+            Obejrzyj piosenkę i spróbuj wychwycić znane słowa.
         </p>
 
-
-        <button
-            onclick="startVideoQuestions()"
-            class="video-button">
-
-            🧩 Gotowe – sprawdzamy!
-
-        </button>
-
-
-        <br>
-
-
-        <button
-            onclick="showMenu()"
-            class="secondary">
-
-            ⬅️ Wróć do menu
-
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FILM – PYTANIA
-===================================================== -->
-
-<section
-    id="videoQuestions"
-    class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            👂 Co zapamiętałeś?
-        </h2>
-
-        <div class="score">
-
-            Pytanie:
-            <span id="videoQuestionNumber">1</span>
-            /
-            <span id="videoTotalQuestions">5</span>
-
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/OwRmivbNgQk"
+                title="Let's Go To The Zoo"
+                allowfullscreen>
+            </iframe>
         </div>
 
-        <div
-            class="video-question"
-            id="videoQuestion">
+        <div style="text-align:center;margin-top:25px;">
+            <button onclick="startVideoQuestions()">
+                🐘 Sprawdź, co pamiętasz
+            </button>
+        </div>
+    </section>
+
+
+    <!-- ==================== PYTANIA DO FILMU ==================== -->
+
+    <section id="videoQuestions">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showMenu()">← Menu</button>
         </div>
 
-        <div
-            id="videoAnswers"
-            class="answers">
+        <h2>🎬 Pytania do filmu</h2>
+
+        <div class="question-box">
+
+            <div id="videoProgress"></div>
+
+            <div id="videoQuestion" class="question"></div>
+
+            <div id="videoAnswers" class="answers"></div>
+
+            <div id="videoFeedback" class="feedback"></div>
+        </div>
+    </section>
+
+
+    <!-- ==================== ZDANIA ==================== -->
+
+    <section id="videoSentences">
+        <div class="top-buttons">
+            <button class="secondary" onclick="showMenu()">← Menu</button>
         </div>
 
-        <div
-            id="videoMessage"
-            class="message">
-        </div>
+        <h2>🗣️ Powiedz po angielsku</h2>
 
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FILM – ZDANIA
-===================================================== -->
-
-<section
-    id="videoSentences"
-    class="hidden">
-
-    <div class="panel">
-
-        <h2>
-            🗣️ Say it!
-        </h2>
-
-        <p>
-            Posłuchaj zdania i spróbuj powiedzieć je samodzielnie.
+        <p style="text-align:center;">
+            Posłuchaj zdania i spróbuj powtórzyć je na głos.
         </p>
 
+        <div id="sentenceList"></div>
 
-        <div class="sentence-box">
-
-            <div
-                class="sentence"
-                id="practiceSentence">
-            </div>
-
-
-            <button
-                onclick="speakCurrentSentence()"
-                class="speak-button">
-
-                🔊 Posłuchaj
-
-            </button>
-
-
-            <br>
-
-
-            <button
-                onclick="nextPracticeSentence()">
-
-                ✅ Umiem – następne
-
-            </button>
-
+        <div style="text-align:center;margin-top:25px;">
+            <button onclick="showMenu()">🏠 Zakończ</button>
         </div>
+    </section>
 
 
-        <div id="sentenceProgress"></div>
+    <!-- ==================== PODSUMOWANIE ==================== -->
 
-    </div>
+    <section id="summary">
+        <div class="summary-box">
+            <h2>🎉 Brawo!</h2>
 
-</section>
+            <p>Ukończyłeś ćwiczenie.</p>
 
+            <div id="summaryContent"></div>
 
-
-<!-- =====================================================
-     PODSUMOWANIE
-===================================================== -->
-
-<section
-    id="summary"
-    class="hidden">
-
-    <div class="panel">
-
-        <div class="badge">
-            🏆
+            <button onclick="showMenu()">
+                🏠 Wróć do menu
+            </button>
         </div>
-
-        <h2>
-            🎉 Świetna robota!
-        </h2>
-
-        <p id="summaryText"></p>
-
-        <button onclick="showMenu()">
-            🏠 Menu główne
-        </button>
-
-    </div>
-
-</section>
-
+    </section>
 
 </main>
 
 
-
 <script>
-
-
 /* =========================================================
-   FUNKCJE OGÓLNE
+   PODSTAWOWE FUNKCJE
 ========================================================= */
 
 function hideAll() {
-
-    const sections = [
-
-        "menu",
-
-        "game",
-        "revision",
-
-        "englishGame",
-        "englishRevision",
-
-        "forestMenu",
-        "forestKnowledge",
-        "forestOrganismQuiz",
-        "forestLayerQuiz",
-
-        "videoLesson",
-        "videoQuestions",
-        "videoSentences",
-
-        "summary"
-
-    ];
-
-    sections.forEach(id => {
-
-        document
-            .getElementById(id)
-            .classList.add("hidden");
-
+    document.querySelectorAll("main section").forEach(section => {
+        section.classList.remove("active");
     });
 }
 
-
 function showMenu() {
-
     hideAll();
-
-    document
-        .getElementById("menu")
-        .classList.remove("hidden");
+    document.getElementById("menu").classList.add("active");
 }
 
+function clearButtonFocus() {
+    const active = document.activeElement;
+
+    if (active && active.tagName === "BUTTON") {
+        active.blur();
+    }
+}
 
 
 /* =========================================================
    TABLICZKA MNOŻENIA
 ========================================================= */
 
-let gameMode = "tiles";
-
-let multiplicationQuestion = 0;
-let multiplicationCorrect = 0;
-
-let a = 0;
-let b = 0;
-let correctAnswer = 0;
-
-let revisionTasks = [];
-let revisionIndex = 0;
-
-const TOTAL_MULTIPLICATION = 10;
-
+let mathMode = "tiles";
+let mathQuestions = [];
+let mathIndex = 0;
+let mathCorrect = 0;
+let mathRevision = [];
 
 function startGame(mode) {
+    mathMode = mode;
+    mathIndex = 0;
+    mathCorrect = 0;
+    mathRevision = [];
+
+    mathQuestions = [];
+
+    for (let i = 0; i < 10; i++) {
+        mathQuestions.push(createMultiplicationTask());
+    }
 
     hideAll();
-
-    gameMode = mode;
-
-    multiplicationQuestion = 0;
-    multiplicationCorrect = 0;
-
-    revisionTasks = [];
-    revisionIndex = 0;
-
-    document
-        .getElementById("game")
-        .classList.remove("hidden");
-
-
-    if (mode === "tiles") {
-
-        document
-            .getElementById("gameTitle")
-            .textContent =
-            "🔲 Tabliczka mnożenia – kafelki";
-
-        document
-            .getElementById("tileAnswers")
-            .classList.remove("hidden");
-
-        document
-            .getElementById("inputAnswer")
-            .classList.add("hidden");
-
-    } else {
-
-        document
-            .getElementById("gameTitle")
-            .textContent =
-            "✏️ Tabliczka mnożenia – wpisywanie";
-
-        document
-            .getElementById("tileAnswers")
-            .classList.add("hidden");
-
-        document
-            .getElementById("inputAnswer")
-            .classList.remove("hidden");
-    }
+    document.getElementById("game").classList.add("active");
 
     nextMultiplicationQuestion();
 }
 
-
 function createMultiplicationTask() {
+    const a = Math.floor(Math.random() * 10) + 1;
+    const b = Math.floor(Math.random() * 10) + 1;
 
-    a =
-        Math.floor(Math.random() * 10) + 1;
-
-    b =
-        Math.floor(Math.random() * 10) + 1;
-
-    correctAnswer =
-        a * b;
+    return {
+        a: a,
+        b: b,
+        answer: a * b
+    };
 }
-
 
 function nextMultiplicationQuestion() {
+    const task = mathQuestions[mathIndex];
 
-    if (multiplicationQuestion >= TOTAL_MULTIPLICATION) {
+    document.getElementById("mathProgress").textContent =
+        `Pytanie ${mathIndex + 1} z ${mathQuestions.length}`;
 
-        finishGame();
+    document.getElementById("mathQuestion").textContent =
+        `${task.a} × ${task.b} = ?`;
 
-        return;
-    }
+    document.getElementById("mathFeedback").textContent = "";
 
-    multiplicationQuestion++;
+    const inputArea = document.getElementById("mathInputArea");
+    const answersArea = document.getElementById("mathAnswers");
 
-    document
-        .getElementById("questionNumber")
-        .textContent =
-        multiplicationQuestion;
+    inputArea.innerHTML = "";
+    answersArea.innerHTML = "";
 
-    document
-        .getElementById("message")
-        .textContent = "";
-
-    createMultiplicationTask();
-
-    document
-        .getElementById("question")
-        .textContent =
-        `${a} × ${b} = ?`;
-
-
-    if (gameMode === "tiles") {
-
-        createTileAnswers();
-
-    } else {
-
-        const input =
-            document.getElementById("answerInput");
-
-        input.value = "";
-        input.disabled = false;
+    if (mathMode === "input") {
+        inputArea.innerHTML = `
+            <input
+                id="mathInput"
+                type="number"
+                placeholder="Wpisz wynik"
+                style="padding:14px;font-size:20px;border-radius:10px;border:1px solid #aaa;width:100%;max-width:300px;"
+            >
+            <br><br>
+            <button onclick="checkInputAnswer()">Sprawdź</button>
+        `;
 
         setTimeout(() => {
-            input.focus();
-        }, 100);
+            document.getElementById("mathInput").focus();
+        }, 50);
+    } else {
+        createTileAnswers(task.answer);
     }
 }
 
+function createTileAnswers(correctAnswer) {
+    const answers = new Set();
+    answers.add(correctAnswer);
 
-function createTileAnswers() {
+    while (answers.size < 4) {
+        const offset = Math.floor(Math.random() * 11) - 5;
+        const value = correctAnswer + offset;
 
-    const container =
-        document.getElementById("tileAnswers");
-
-    container.innerHTML = "";
-
-    let answers = [
-        correctAnswer
-    ];
-
-
-    while (answers.length < 4) {
-
-        let wrong =
-            Math.floor(Math.random() * 100) + 1;
-
-        if (!answers.includes(wrong)) {
-
-            answers.push(wrong);
+        if (value > 0) {
+            answers.add(value);
         }
     }
 
+    const shuffled = Array.from(answers).sort(() => Math.random() - 0.5);
 
-    answers.sort(
-        () => Math.random() - 0.5
-    );
+    const area = document.getElementById("mathAnswers");
 
-
-    answers.forEach(answer => {
-
-        const button =
-            document.createElement("button");
-
-        button.className = "answer";
-
+    shuffled.forEach(answer => {
+        const button = document.createElement("button");
+        button.className = "answer-button";
         button.textContent = answer;
 
-        button.onclick = function() {
-
-            checkMultiplicationAnswer(answer);
-
+        button.onclick = () => {
+            checkMultiplicationAnswer(answer, button);
         };
 
-        container.appendChild(button);
-
+        area.appendChild(button);
     });
 }
 
+function checkMultiplicationAnswer(answer, clickedButton) {
+    clearButtonFocus();
 
-function checkMultiplicationAnswer(answer) {
+    const task = mathQuestions[mathIndex];
+    const feedback = document.getElementById("mathFeedback");
 
-    if (answer === correctAnswer) {
+    if (answer === task.answer) {
+        mathCorrect++;
 
-        multiplicationCorrect++;
+        feedback.textContent = "✅ Dobrze!";
+        feedback.className = "feedback correct";
 
-        document
-            .getElementById("message")
-            .textContent =
-            "✅ Dobrze!";
+        document.querySelectorAll("#mathAnswers button").forEach(btn => {
+            btn.disabled = true;
+        });
 
-        document
-            .getElementById("message")
-            .className =
-            "message correct";
+        setTimeout(() => {
+            mathIndex++;
 
-
-        document
-            .querySelectorAll(
-                "#tileAnswers button"
-            )
-            .forEach(button => {
-
-                button.disabled = true;
-
-            });
-
-
-        setTimeout(
-            nextMultiplicationQuestion,
-            500
-        );
+            if (mathIndex < mathQuestions.length) {
+                nextMultiplicationQuestion();
+            } else {
+                finishGame();
+            }
+        }, 700);
 
     } else {
+        feedback.textContent = "❌ Spróbuj jeszcze raz.";
+        feedback.className = "feedback wrong";
 
-        document
-            .getElementById("message")
-            .textContent =
-            "❌ Niepoprawna odpowiedź. Spróbuj jeszcze raz!";
-
-        document
-            .getElementById("message")
-            .className =
-            "message wrong";
-
-        addRevisionTask(a, b);
+        addRevisionTask(task);
     }
+
+    clearButtonFocus();
 }
 
-
 function checkInputAnswer() {
+    const input = document.getElementById("mathInput");
+    const value = Number(input.value);
 
-    const input =
-        document.getElementById("answerInput");
+    const task = mathQuestions[mathIndex];
+    const feedback = document.getElementById("mathFeedback");
 
-    if (!input.value) {
-        return;
-    }
+    if (value === task.answer) {
+        mathCorrect++;
 
-    const answer =
-        Number(input.value);
-
-
-    if (answer === correctAnswer) {
-
-        multiplicationCorrect++;
-
-        document
-            .getElementById("message")
-            .textContent =
-            "✅ Dobrze!";
-
-        document
-            .getElementById("message")
-            .className =
-            "message correct";
+        feedback.textContent = "✅ Dobrze!";
+        feedback.className = "feedback correct";
 
         input.disabled = true;
 
-
         setTimeout(() => {
+            mathIndex++;
 
-            input.disabled = false;
-
-            nextMultiplicationQuestion();
-
-        }, 500);
-
+            if (mathIndex < mathQuestions.length) {
+                nextMultiplicationQuestion();
+            } else {
+                finishGame();
+            }
+        }, 700);
 
     } else {
+        feedback.textContent = "❌ Spróbuj jeszcze raz.";
+        feedback.className = "feedback wrong";
 
-        document
-            .getElementById("message")
-            .textContent =
-            "❌ Niepoprawna odpowiedź. Spróbuj jeszcze raz!";
-
-        document
-            .getElementById("message")
-            .className =
-            "message wrong";
-
-        addRevisionTask(a, b);
+        addRevisionTask(task);
     }
 }
 
-
-function addRevisionTask(x, y) {
-
-    const exists =
-        revisionTasks.some(task =>
-            task.a === x &&
-            task.b === y
-        );
-
+function addRevisionTask(task) {
+    const exists = mathRevision.some(
+        item => item.a === task.a && item.b === task.b
+    );
 
     if (!exists) {
-
-        revisionTasks.push({
-            a: x,
-            b: y
-        });
+        mathRevision.push(task);
     }
 }
 
-
 function finishGame() {
-
-    if (revisionTasks.length > 0) {
-
-        revisionIndex = 0;
+    if (mathRevision.length > 0) {
+        mathIndex = 0;
 
         hideAll();
-
-        document
-            .getElementById("revision")
-            .classList.remove("hidden");
+        document.getElementById("revision").classList.add("active");
 
         showRevisionTask();
-
     } else {
-
         showMathSummary();
     }
 }
 
-
 function showRevisionTask() {
+    const task = mathRevision[mathIndex];
 
-    const task =
-        revisionTasks[revisionIndex];
+    document.getElementById("revisionProgress").textContent =
+        `Powtórka ${mathIndex + 1} z ${mathRevision.length}`;
 
-    document
-        .getElementById("revisionQuestion")
-        .textContent =
+    document.getElementById("revisionQuestion").textContent =
         `${task.a} × ${task.b} = ?`;
 
-    document
-        .getElementById("revisionInput")
-        .value = "";
+    document.getElementById("revisionFeedback").textContent = "";
 
-    document
-        .getElementById("revisionMessage")
-        .textContent = "";
+    const input = document.getElementById("revisionInput");
 
-    document
-        .getElementById("revisionInput")
-        .focus();
+    input.value = "";
+    input.disabled = false;
+    input.focus();
 }
 
-
 function checkRevision() {
+    const input = document.getElementById("revisionInput");
+    const value = Number(input.value);
+    const task = mathRevision[mathIndex];
 
-    const task =
-        revisionTasks[revisionIndex];
+    const feedback = document.getElementById("revisionFeedback");
 
-    const answer =
-        Number(
-            document
-                .getElementById("revisionInput")
-                .value
-        );
+    if (value === task.answer) {
+        feedback.textContent = "✅ Teraz już dobrze!";
+        feedback.className = "feedback correct";
 
-
-    if (answer === task.a * task.b) {
-
-        document
-            .getElementById("revisionMessage")
-            .textContent =
-            "✅ Świetnie!";
-
-        document
-            .getElementById("revisionMessage")
-            .className =
-            "message correct";
-
-        revisionIndex++;
-
+        input.disabled = true;
 
         setTimeout(() => {
+            mathIndex++;
 
-            if (
-                revisionIndex >=
-                revisionTasks.length
-            ) {
-
-                showMathSummary();
-
-            } else {
-
+            if (mathIndex < mathRevision.length) {
                 showRevisionTask();
+            } else {
+                showMathSummary();
             }
-
-        }, 500);
-
+        }, 700);
 
     } else {
+        feedback.textContent = "❌ Jeszcze raz. Musisz podać dobrą odpowiedź.";
+        feedback.className = "feedback wrong";
 
-        document
-            .getElementById("revisionMessage")
-            .textContent =
-            "❌ Jeszcze nie. Spróbuj ponownie.";
-
-        document
-            .getElementById("revisionMessage")
-            .className =
-            "message wrong";
+        input.select();
     }
 }
 
-
 function showMathSummary() {
-
     hideAll();
 
-    document
-        .getElementById("summary")
-        .classList.remove("hidden");
+    document.getElementById("summary").classList.add("active");
 
-    document
-        .getElementById("summaryText")
-        .innerHTML =
-        `🧩 Tabliczka mnożenia zakończona!<br><br>
+    document.getElementById("summaryContent").innerHTML = `
+        <div class="summary-score">
+            ${mathCorrect} / ${mathQuestions.length}
+        </div>
 
-        Poprawne odpowiedzi:
-        <strong>${multiplicationCorrect}</strong>
-        / ${TOTAL_MULTIPLICATION}<br>
-
-        Zadania do powtórki:
-        <strong>${revisionTasks.length}</strong>`;
+        <p>
+            Poprawnych odpowiedzi w pierwszym podejściu:
+            <strong>${mathCorrect}</strong>.
+        </p>
+    `;
 }
-
 
 
 /* =========================================================
@@ -2002,774 +1146,468 @@ function showMathSummary() {
 ========================================================= */
 
 const numberWords = {
-
-    1:"one",
-    2:"two",
-    3:"three",
-    4:"four",
-    5:"five",
-    6:"six",
-    7:"seven",
-    8:"eight",
-    9:"nine",
-    10:"ten",
-
-    11:"eleven",
-    12:"twelve",
-    13:"thirteen",
-    14:"fourteen",
-    15:"fifteen",
-    16:"sixteen",
-    17:"seventeen",
-    18:"eighteen",
-    19:"nineteen",
-    20:"twenty",
-
-    21:"twenty-one",
-    22:"twenty-two",
-    23:"twenty-three",
-    24:"twenty-four",
-    25:"twenty-five",
-    26:"twenty-six",
-    27:"twenty-seven",
-    28:"twenty-eight",
-    29:"twenty-nine",
-
-    30:"thirty",
-    31:"thirty-one",
-    32:"thirty-two",
-    33:"thirty-three",
-    34:"thirty-four",
-    35:"thirty-five",
-    36:"thirty-six",
-    37:"thirty-seven",
-    38:"thirty-eight",
-    39:"thirty-nine",
-
-    40:"forty",
-    41:"forty-one",
-    42:"forty-two",
-    43:"forty-three",
-    44:"forty-four",
-    45:"forty-five",
-    46:"forty-six",
-    47:"forty-seven",
-    48:"forty-eight",
-    49:"forty-nine",
-
-    50:"fifty",
-    51:"fifty-one",
-    52:"fifty-two",
-    53:"fifty-three",
-    54:"fifty-four",
-    55:"fifty-five",
-    56:"fifty-six",
-    57:"fifty-seven",
-    58:"fifty-eight",
-    59:"fifty-nine",
-
-    60:"sixty",
-    61:"sixty-one",
-    62:"sixty-two",
-    63:"sixty-three",
-    64:"sixty-four",
-    65:"sixty-five",
-    66:"sixty-six",
-    67:"sixty-seven",
-    68:"sixty-eight",
-    69:"sixty-nine",
-
-    70:"seventy",
-    71:"seventy-one",
-    72:"seventy-two",
-    73:"seventy-three",
-    74:"seventy-four",
-    75:"seventy-five",
-    76:"seventy-six",
-    77:"seventy-seven",
-    78:"seventy-eight",
-    79:"seventy-nine",
-
-    80:"eighty",
-    81:"eighty-one",
-    82:"eighty-two",
-    83:"eighty-three",
-    84:"eighty-four",
-    85:"eighty-five",
-    86:"eighty-six",
-    87:"eighty-seven",
-    88:"eighty-eight",
-    89:"eighty-nine",
-
-    90:"ninety",
-    91:"ninety-one",
-    92:"ninety-two",
-    93:"ninety-three",
-    94:"ninety-four",
-    95:"ninety-five",
-    96:"ninety-six",
-    97:"ninety-seven",
-    98:"ninety-eight",
-    99:"ninety-nine",
-
-    100:"one hundred"
+    1: "one",
+    2: "two",
+    3: "three",
+    4: "four",
+    5: "five",
+    6: "six",
+    7: "seven",
+    8: "eight",
+    9: "nine",
+    10: "ten",
+    11: "eleven",
+    12: "twelve",
+    13: "thirteen",
+    14: "fourteen",
+    15: "fifteen",
+    16: "sixteen",
+    17: "seventeen",
+    18: "eighteen",
+    19: "nineteen",
+    20: "twenty",
+    21: "twenty-one",
+    22: "twenty-two",
+    23: "twenty-three",
+    24: "twenty-four",
+    25: "twenty-five",
+    26: "twenty-six",
+    27: "twenty-seven",
+    28: "twenty-eight",
+    29: "twenty-nine",
+    30: "thirty",
+    31: "thirty-one",
+    32: "thirty-two",
+    33: "thirty-three",
+    34: "thirty-four",
+    35: "thirty-five",
+    36: "thirty-six",
+    37: "thirty-seven",
+    38: "thirty-eight",
+    39: "thirty-nine",
+    40: "forty",
+    41: "forty-one",
+    42: "forty-two",
+    43: "forty-three",
+    44: "forty-four",
+    45: "forty-five",
+    46: "forty-six",
+    47: "forty-seven",
+    48: "forty-eight",
+    49: "forty-nine",
+    50: "fifty",
+    51: "fifty-one",
+    52: "fifty-two",
+    53: "fifty-three",
+    54: "fifty-four",
+    55: "fifty-five",
+    56: "fifty-six",
+    57: "fifty-seven",
+    58: "fifty-eight",
+    59: "fifty-nine",
+    60: "sixty",
+    61: "sixty-one",
+    62: "sixty-two",
+    63: "sixty-three",
+    64: "sixty-four",
+    65: "sixty-five",
+    66: "sixty-six",
+    67: "sixty-seven",
+    68: "sixty-eight",
+    69: "sixty-nine",
+    70: "seventy",
+    71: "seventy-one",
+    72: "seventy-two",
+    73: "seventy-three",
+    74: "seventy-four",
+    75: "seventy-five",
+    76: "seventy-six",
+    77: "seventy-seven",
+    78: "seventy-eight",
+    79: "seventy-nine",
+    80: "eighty",
+    81: "eighty-one",
+    82: "eighty-two",
+    83: "eighty-three",
+    84: "eighty-four",
+    85: "eighty-five",
+    86: "eighty-six",
+    87: "eighty-seven",
+    88: "eighty-eight",
+    89: "eighty-nine",
+    90: "ninety",
+    91: "ninety-one",
+    92: "ninety-two",
+    93: "ninety-three",
+    94: "ninety-four",
+    95: "ninety-five",
+    96: "ninety-six",
+    97: "ninety-seven",
+    98: "ninety-eight",
+    99: "ninety-nine",
+    100: "one hundred"
 };
 
-
 let englishMode = "numberToWord";
-
-let englishQuestion = 0;
+let englishQuestions = [];
+let englishIndex = 0;
 let englishCorrect = 0;
-let englishCurrentNumber = 1;
-
-let englishRevisionTasks = [];
-let englishRevisionIndex = 0;
-
-const TOTAL_ENGLISH = 10;
-
+let englishRevision = [];
 
 function startEnglishGame(mode) {
+    englishMode = mode;
+    englishQuestions = [];
+    englishIndex = 0;
+    englishCorrect = 0;
+    englishRevision = [];
+
+    for (let i = 0; i < 10; i++) {
+        const number = Math.floor(Math.random() * 100) + 1;
+
+        englishQuestions.push({
+            number: number,
+            word: numberWords[number]
+        });
+    }
 
     hideAll();
-
-    englishMode = mode;
-
-    englishQuestion = 0;
-    englishCorrect = 0;
-
-    englishRevisionTasks = [];
-    englishRevisionIndex = 0;
-
-    document
-        .getElementById("englishGame")
-        .classList.remove("hidden");
+    document.getElementById("englishGame").classList.add("active");
 
     nextEnglishQuestion();
 }
 
-
 function nextEnglishQuestion() {
+    const task = englishQuestions[englishIndex];
 
-    if (englishQuestion >= TOTAL_ENGLISH) {
+    document.getElementById("englishProgress").textContent =
+        `Pytanie ${englishIndex + 1} z ${englishQuestions.length}`;
 
-        finishEnglishGame();
+    document.getElementById("englishFeedback").textContent = "";
 
-        return;
-    }
-
-    englishQuestion++;
-
-    document
-        .getElementById("englishQuestionNumber")
-        .textContent =
-        englishQuestion;
-
-    document
-        .getElementById("englishTotalQuestions")
-        .textContent =
-        TOTAL_ENGLISH;
-
-    document
-        .getElementById("englishMessage")
-        .textContent = "";
-
-    englishCurrentNumber =
-        Math.floor(Math.random() * 100) + 1;
-
-
-    const question =
-        document.getElementById("englishQuestion");
-
-
-    if (
-        englishMode ===
-        "numberToWord"
-    ) {
-
-        question.textContent =
-            englishCurrentNumber;
-
+    if (englishMode === "numberToWord") {
+        document.getElementById("englishQuestion").textContent =
+            task.number;
     } else {
-
-        question.textContent =
-            numberWords[
-                englishCurrentNumber
-            ];
+        document.getElementById("englishQuestion").textContent =
+            task.word;
     }
 
-
-    createEnglishAnswers();
+    createEnglishAnswers(task);
 }
 
+function createEnglishAnswers(task) {
+    const area = document.getElementById("englishAnswers");
 
-function createEnglishAnswers() {
+    area.innerHTML = "";
 
-    const container =
-        document.getElementById("englishAnswers");
+    const answers = new Set();
 
-    container.innerHTML = "";
+    if (englishMode === "numberToWord") {
+        answers.add(task.word);
 
-    let answers = [];
-
-
-    if (
-        englishMode ===
-        "numberToWord"
-    ) {
-
-        answers.push(
-            numberWords[
-                englishCurrentNumber
-            ]
-        );
-
-
-        while (answers.length < 4) {
-
-            const randomNumber =
-                Math.floor(
-                    Math.random() * 100
-                ) + 1;
-
-            const word =
-                numberWords[randomNumber];
-
-            if (!answers.includes(word)) {
-
-                answers.push(word);
-            }
+        while (answers.size < 4) {
+            const number = Math.floor(Math.random() * 100) + 1;
+            answers.add(numberWords[number]);
         }
-
     } else {
+        answers.add(task.number);
 
-        answers.push(
-            englishCurrentNumber
-        );
-
-
-        while (answers.length < 4) {
-
-            const randomNumber =
-                Math.floor(
-                    Math.random() * 100
-                ) + 1;
-
-            if (!answers.includes(randomNumber)) {
-
-                answers.push(randomNumber);
-            }
+        while (answers.size < 4) {
+            answers.add(Math.floor(Math.random() * 100) + 1);
         }
     }
 
+    Array.from(answers)
+        .sort(() => Math.random() - 0.5)
+        .forEach(answer => {
+            const button = document.createElement("button");
+            button.className = "answer-button";
+            button.textContent = answer;
 
-    answers.sort(
-        () => Math.random() - 0.5
-    );
+            button.onclick = () => {
+                checkEnglishAnswer(answer, button);
+            };
 
-
-    answers.forEach(answer => {
-
-        const button =
-            document.createElement("button");
-
-        button.className = "answer";
-
-        button.textContent = answer;
-
-        button.onclick = function() {
-
-            checkEnglishAnswer(answer);
-
-        };
-
-        container.appendChild(button);
-
-    });
+            area.appendChild(button);
+        });
 }
 
+function checkEnglishAnswer(answer, clickedButton) {
+    clearButtonFocus();
 
-function checkEnglishAnswer(answer) {
+    const task = englishQuestions[englishIndex];
 
-    let correct;
+    const correctAnswer =
+        englishMode === "numberToWord"
+            ? task.word
+            : task.number;
 
+    const feedback = document.getElementById("englishFeedback");
 
-    if (
-        englishMode ===
-        "numberToWord"
-    ) {
-
-        correct =
-            answer ===
-            numberWords[
-                englishCurrentNumber
-            ];
-
-    } else {
-
-        correct =
-            Number(answer) ===
-            englishCurrentNumber;
-    }
-
-
-    if (correct) {
-
+    if (answer === correctAnswer) {
         englishCorrect++;
 
-        document
-            .getElementById("englishMessage")
-            .textContent =
-            "✅ Dobrze!";
+        feedback.textContent = "✅ Correct!";
+        feedback.className = "feedback correct";
 
-        document
-            .getElementById("englishMessage")
-            .className =
-            "message correct";
+        document.querySelectorAll("#englishAnswers button").forEach(btn => {
+            btn.disabled = true;
+        });
 
+        setTimeout(() => {
+            englishIndex++;
 
-        document
-            .querySelectorAll(
-                "#englishAnswers button"
-            )
-            .forEach(button => {
-
-                button.disabled = true;
-
-            });
-
-
-        setTimeout(
-            nextEnglishQuestion,
-            500
-        );
-
+            if (englishIndex < englishQuestions.length) {
+                nextEnglishQuestion();
+            } else {
+                finishEnglishGame();
+            }
+        }, 700);
 
     } else {
+        feedback.textContent = "❌ Try again.";
+        feedback.className = "feedback wrong";
 
-        document
-            .getElementById("englishMessage")
-            .textContent =
-            "❌ Niepoprawna odpowiedź. Spróbuj jeszcze raz!";
-
-        document
-            .getElementById("englishMessage")
-            .className =
-            "message wrong";
-
-        addEnglishRevision(
-            englishCurrentNumber
-        );
+        addEnglishRevision(task);
     }
+
+    clearButtonFocus();
 }
 
+function addEnglishRevision(task) {
+    const exists = englishRevision.some(
+        item => item.number === task.number
+    );
 
-function addEnglishRevision(number) {
-
-    if (
-        !englishRevisionTasks.includes(number)
-    ) {
-
-        englishRevisionTasks.push(number);
+    if (!exists) {
+        englishRevision.push(task);
     }
 }
-
 
 function finishEnglishGame() {
-
-    if (
-        englishRevisionTasks.length > 0
-    ) {
-
-        englishRevisionIndex = 0;
+    if (englishRevision.length > 0) {
+        englishIndex = 0;
 
         hideAll();
-
-        document
-            .getElementById("englishRevision")
-            .classList.remove("hidden");
+        document.getElementById("englishRevision").classList.add("active");
 
         showEnglishRevision();
-
     } else {
-
         showEnglishSummary();
     }
 }
 
-
 function showEnglishRevision() {
+    const task = englishRevision[englishIndex];
 
-    const number =
-        englishRevisionTasks[
-            englishRevisionIndex
-        ];
+    document.getElementById("englishRevisionProgress").textContent =
+        `Powtórka ${englishIndex + 1} z ${englishRevision.length}`;
 
+    document.getElementById("englishRevisionQuestion").textContent =
+        englishMode === "numberToWord"
+            ? task.number
+            : task.word;
 
-    const question =
-        document.getElementById(
-            "englishRevisionQuestion"
-        );
+    document.getElementById("englishRevisionFeedback").textContent = "";
 
+    createEnglishRevisionAnswers(task);
+}
 
-    const answers =
-        document.getElementById(
-            "englishRevisionAnswers"
-        );
+function createEnglishRevisionAnswers(task) {
+    const area = document.getElementById("englishRevisionAnswers");
 
+    area.innerHTML = "";
 
-    question.textContent =
-        englishMode ===
-        "numberToWord"
+    const answers = new Set();
 
-        ? number
+    const correctAnswer =
+        englishMode === "numberToWord"
+            ? task.word
+            : task.number;
 
-        : numberWords[number];
+    answers.add(correctAnswer);
 
-
-    answers.innerHTML = "";
-
-    let options = [];
-
-
-    if (
-        englishMode ===
-        "numberToWord"
-    ) {
-
-        options.push(
-            numberWords[number]
-        );
-
-
-        while (options.length < 4) {
-
-            const random =
-                Math.floor(
-                    Math.random() * 100
-                ) + 1;
-
-            const word =
-                numberWords[random];
-
-            if (!options.includes(word)) {
-
-                options.push(word);
-            }
-        }
-
-    } else {
-
-        options.push(number);
-
-
-        while (options.length < 4) {
-
-            const random =
-                Math.floor(
-                    Math.random() * 100
-                ) + 1;
-
-            if (!options.includes(random)) {
-
-                options.push(random);
-            }
+    while (answers.size < 4) {
+        if (englishMode === "numberToWord") {
+            const number = Math.floor(Math.random() * 100) + 1;
+            answers.add(numberWords[number]);
+        } else {
+            answers.add(Math.floor(Math.random() * 100) + 1);
         }
     }
 
+    Array.from(answers)
+        .sort(() => Math.random() - 0.5)
+        .forEach(answer => {
+            const button = document.createElement("button");
 
-    options.sort(
-        () => Math.random() - 0.5
-    );
+            button.className = "answer-button";
+            button.textContent = answer;
 
+            button.onclick = () => {
+                checkEnglishRevision(answer);
+                clearButtonFocus();
+            };
 
-    options.forEach(option => {
-
-        const button =
-            document.createElement("button");
-
-        button.className = "answer";
-
-        button.textContent = option;
-
-        button.onclick = function() {
-
-            checkEnglishRevision(option);
-
-        };
-
-        answers.appendChild(button);
-
-    });
+            area.appendChild(button);
+        });
 }
-
 
 function checkEnglishRevision(answer) {
+    const task = englishRevision[englishIndex];
 
-    const number =
-        englishRevisionTasks[
-            englishRevisionIndex
-        ];
+    const correctAnswer =
+        englishMode === "numberToWord"
+            ? task.word
+            : task.number;
 
-    let correct;
+    const feedback = document.getElementById("englishRevisionFeedback");
 
+    if (answer === correctAnswer) {
+        feedback.textContent = "✅ Dobrze!";
+        feedback.className = "feedback correct";
 
-    if (
-        englishMode ===
-        "numberToWord"
-    ) {
-
-        correct =
-            answer ===
-            numberWords[number];
-
-    } else {
-
-        correct =
-            Number(answer) === number;
-    }
-
-
-    if (correct) {
-
-        document
-            .getElementById(
-                "englishRevisionMessage"
-            )
-            .textContent =
-            "✅ Świetnie!";
-
-        document
-            .getElementById(
-                "englishRevisionMessage"
-            )
-            .className =
-            "message correct";
-
-        englishRevisionIndex++;
-
+        document.querySelectorAll("#englishRevisionAnswers button").forEach(btn => {
+            btn.disabled = true;
+        });
 
         setTimeout(() => {
+            englishIndex++;
 
-            if (
-                englishRevisionIndex >=
-                englishRevisionTasks.length
-            ) {
-
-                showEnglishSummary();
-
-            } else {
-
+            if (englishIndex < englishRevision.length) {
                 showEnglishRevision();
+            } else {
+                showEnglishSummary();
             }
-
-        }, 500);
-
+        }, 700);
 
     } else {
-
-        document
-            .getElementById(
-                "englishRevisionMessage"
-            )
-            .textContent =
-            "❌ Jeszcze nie. Spróbuj ponownie.";
-
-        document
-            .getElementById(
-                "englishRevisionMessage"
-            )
-            .className =
-            "message wrong";
+        feedback.textContent = "❌ Spróbuj jeszcze raz.";
+        feedback.className = "feedback wrong";
     }
-}
 
+    clearButtonFocus();
+}
 
 function showEnglishSummary() {
-
     hideAll();
 
-    document
-        .getElementById("summary")
-        .classList.remove("hidden");
+    document.getElementById("summary").classList.add("active");
 
-    document
-        .getElementById("summaryText")
-        .innerHTML =
-        `🇬🇧 Angielski zakończony!<br><br>
+    document.getElementById("summaryContent").innerHTML = `
+        <div class="summary-score">
+            ${englishCorrect} / ${englishQuestions.length}
+        </div>
 
-        Poprawne odpowiedzi:
-        <strong>${englishCorrect}</strong>
-        / ${TOTAL_ENGLISH}<br>
-
-        Zadania do powtórki:
-        <strong>${englishRevisionTasks.length}</strong>`;
+        <p>
+            Poprawnych odpowiedzi w pierwszym podejściu:
+            <strong>${englishCorrect}</strong>.
+        </p>
+    `;
 }
-
 
 
 /* =========================================================
-   WARSTWY LASU – DANE
+   LAS – DANE
 ========================================================= */
-
-/*
-   UWAGA:
-   W ćwiczeniach używamy przykładów możliwie
-   jednoznacznych dla danej warstwy.
-
-   Zwierzęta takie jak wiewiórka mogą w rzeczywistości
-   korzystać z kilku warstw, dlatego nie używamy ich
-   jako jedynej odpowiedzi w trudnych dopasowaniach.
-*/
-
 
 const forestData = {
 
     canopy: {
-
         name: "Korony drzew",
-
         icon: "🌳",
-
         plants: [
-
             "Dąb",
             "Buk",
             "Sosna",
             "Świerk",
             "Brzoza",
             "Modrzew"
-
         ],
-
         animals: [
-
             "Dzięcioł",
             "Sójka",
             "Kowalik",
-            "Puszczyk"
-
+            "Puszczyk",
+            "Wiewiórka"
         ]
-
     },
 
-
     understory: {
-
         name: "Podszyt",
-
         icon: "🌿",
-
         plants: [
-
             "Jarzębina",
             "Jałowiec",
             "Leszczyna",
             "Głóg",
             "Kalina",
             "Dzika róża"
-
         ],
-
         animals: [
-
             "Sarna",
             "Dzik",
             "Lis",
             "Kos",
             "Rudzik"
-
         ]
-
     },
 
-
     ground: {
-
         name: "Runo leśne",
-
-        icon: "🍄",
-
+        icon: "🌱",
         plants: [
-
             "Paproć",
             "Mech",
             "Borówka czarna",
             "Borówka brusznica",
             "Wrzos",
             "Konwalia majowa"
-
         ],
-
         animals: [
-
             "Jeż",
             "Zając",
             "Żaba",
             "Ropucha",
             "Jaszczurka"
-
         ]
-
     },
 
-
     litter: {
-
         name: "Ściółka",
-
         icon: "🍂",
-
         plants: [],
-
         animals: [
-
             "Dżdżownica",
             "Stonoga",
             "Krocionóg",
             "Mrówka",
             "Żuk"
-
         ],
-
         materials: [
-
             "Opadłe liście",
             "Igły drzew",
             "Gałązki",
             "Kawałki kory",
             "Szyszki"
-
         ]
-
     }
-
 };
 
 
-
 /* =========================================================
-   LAS – POZNAJ WARSTWY
+   LAS – MENU I WIEDZA
 ========================================================= */
 
 function showForestMenu() {
-
     hideAll();
-
-    document
-        .getElementById("forestMenu")
-        .classList.remove("hidden");
+    document.getElementById("forestMenu").classList.add("active");
 }
-
 
 function showForestKnowledge() {
-
     hideAll();
-
-    document
-        .getElementById("forestKnowledge")
-        .classList.remove("hidden");
+    document.getElementById("forestKnowledge").classList.add("active");
 }
-
 
 
 /* =========================================================
@@ -2777,365 +1615,227 @@ function showForestKnowledge() {
 ========================================================= */
 
 let forestOrganismQuestions = [];
-
 let forestOrganismIndex = 0;
-
 let forestOrganismCorrect = 0;
 
 const FOREST_ORGANISM_TOTAL = 12;
 
-
 function buildForestOrganismQuestions() {
 
-    forestOrganismQuestions = [];
+    return [
+        {
+            item: "Dąb",
+            icon: "🌳",
+            layer: "canopy"
+        },
+        {
+            item: "Dzięcioł",
+            icon: "🐦",
+            layer: "canopy"
+        },
+        {
+            item: "Sosna",
+            icon: "🌲",
+            layer: "canopy"
+        },
 
+        {
+            item: "Jarzębina",
+            icon: "🌿",
+            layer: "understory"
+        },
+        {
+            item: "Jałowiec",
+            icon: "🌿",
+            layer: "understory"
+        },
+        {
+            item: "Leszczyna",
+            icon: "🌿",
+            layer: "understory"
+        },
 
-    const addQuestion = (
-        item,
-        type,
-        layer
-    ) => {
+        {
+            item: "Paproć",
+            icon: "🌱",
+            layer: "ground"
+        },
+        {
+            item: "Borówka czarna",
+            icon: "🫐",
+            layer: "ground"
+        },
+        {
+            item: "Jeż",
+            icon: "🦔",
+            layer: "ground"
+        },
 
-        forestOrganismQuestions.push({
-
-            item: item,
-
-            type: type,
-
-            layer: layer
-
-        });
-
-    };
-
-
-    /* KORONY */
-
-    addQuestion(
-        "Dąb",
-        "roślina",
-        "canopy"
-    );
-
-    addQuestion(
-        "Dzięcioł",
-        "zwierzę",
-        "canopy"
-    );
-
-    addQuestion(
-        "Sosna",
-        "roślina",
-        "canopy"
-    );
-
-
-    /* PODSZYT */
-
-    addQuestion(
-        "Jarzębina",
-        "roślina",
-        "understory"
-    );
-
-    addQuestion(
-        "Jałowiec",
-        "roślina",
-        "understory"
-    );
-
-    addQuestion(
-        "Leszczyna",
-        "roślina",
-        "understory"
-    );
-
-
-    /* RUNO */
-
-    addQuestion(
-        "Paproć",
-        "roślina",
-        "ground"
-    );
-
-    addQuestion(
-        "Borówka czarna",
-        "roślina",
-        "ground"
-    );
-
-    addQuestion(
-        "Jeż",
-        "zwierzę",
-        "ground"
-    );
-
-
-    /* ŚCIÓŁKA */
-
-    addQuestion(
-        "Dżdżownica",
-        "zwierzę",
-        "litter"
-    );
-
-    addQuestion(
-        "Stonoga",
-        "zwierzę",
-        "litter"
-    );
-
-    addQuestion(
-        "Żuk",
-        "zwierzę",
-        "litter"
-    );
-
-
-    forestOrganismQuestions.sort(
-        () => Math.random() - 0.5
-    );
+        {
+            item: "Dżdżownica",
+            icon: "🪱",
+            layer: "litter"
+        },
+        {
+            item: "Stonoga",
+            icon: "🐛",
+            layer: "litter"
+        },
+        {
+            item: "Żuk",
+            icon: "🪲",
+            layer: "litter"
+        }
+    ];
 }
 
-
 function startForestOrganismQuiz() {
+    forestOrganismQuestions = buildForestOrganismQuestions();
+
+    forestOrganismIndex = 0;
+    forestOrganismCorrect = 0;
 
     hideAll();
 
-    forestOrganismIndex = 0;
-
-    forestOrganismCorrect = 0;
-
-    buildForestOrganismQuestions();
-
     document
         .getElementById("forestOrganismQuiz")
-        .classList.remove("hidden");
+        .classList.add("active");
 
     showForestOrganismQuestion();
 }
 
-
 function showForestOrganismQuestion() {
+    const task = forestOrganismQuestions[forestOrganismIndex];
 
-    if (
-        forestOrganismIndex >=
-        forestOrganismQuestions.length
-    ) {
+    document.getElementById("forestOrganismProgress").textContent =
+        `Pytanie ${forestOrganismIndex + 1} z ${FOREST_ORGANISM_TOTAL}`;
 
-        finishForestOrganismQuiz();
+    document.getElementById("forestOrganismIcon").textContent =
+        task.icon;
 
-        return;
-    }
+    document.getElementById("forestOrganismQuestion").textContent =
+        `Gdzie znajdziemy: ${task.item}?`;
 
+    document.getElementById("forestOrganismFeedback").textContent = "";
 
-    const question =
-        forestOrganismQuestions[
-            forestOrganismIndex
-        ];
+    createForestLayerAnswers(task.layer);
 
-
-    document
-        .getElementById(
-            "forestOrganismNumber"
-        )
-        .textContent =
-        forestOrganismIndex + 1;
-
-
-    document
-        .getElementById(
-            "forestOrganismTotal"
-        )
-        .textContent =
-        FOREST_ORGANISM_TOTAL;
-
-
-    document
-        .getElementById(
-            "forestOrganismName"
-        )
-        .textContent =
-        question.item;
-
-
-    document
-        .getElementById(
-            "forestOrganismType"
-        )
-        .textContent =
-        question.type === "roślina"
-        ? "🌱 roślina"
-        : "🐾 zwierzę";
-
-
-    document
-        .getElementById(
-            "forestOrganismIcon"
-        )
-        .textContent =
-        question.type === "roślina"
-        ? "🌱"
-        : "🐾";
-
-
-    document
-        .getElementById(
-            "forestOrganismMessage"
-        )
-        .textContent = "";
-
-
-    createForestLayerAnswers(
-        "forestOrganismAnswers",
-        question.layer
-    );
+    clearButtonFocus();
 }
 
+function createForestLayerAnswers(correctLayer) {
 
-function createForestLayerAnswers(
-    containerId,
-    correctLayer
-) {
+    const area = document.getElementById("forestOrganismAnswers");
 
-    const container =
-        document.getElementById(
-            containerId
-        );
+    area.innerHTML = "";
 
-    container.innerHTML = "";
+    const layers = Object.keys(forestData);
 
+    layers
+        .sort(() => Math.random() - 0.5)
+        .forEach(layerKey => {
 
-    const layers = [
-        "canopy",
-        "understory",
-        "ground",
-        "litter"
-    ];
+            const button = document.createElement("button");
 
+            button.className = "forest-answer";
 
-    layers.forEach(layer => {
+            button.textContent =
+                `${forestData[layerKey].icon} ${forestData[layerKey].name}`;
 
-        const button =
-            document.createElement("button");
+            button.onclick = () => {
+                checkForestOrganismAnswer(
+                    layerKey,
+                    correctLayer,
+                    button
+                );
+            };
 
-        button.className =
-            "forest-answer";
-
-        button.textContent =
-            forestData[layer].icon +
-            " " +
-            forestData[layer].name;
-
-
-        button.onclick = function() {
-
-            checkForestOrganismAnswer(
-                layer,
-                correctLayer
-            );
-
-        };
-
-
-        container.appendChild(button);
-
-    });
+            area.appendChild(button);
+        });
 }
-
 
 function checkForestOrganismAnswer(
     selectedLayer,
-    correctLayer
+    correctLayer,
+    clickedButton
 ) {
+    clearButtonFocus();
 
-    if (
-        selectedLayer ===
-        correctLayer
-    ) {
+    const feedback =
+        document.getElementById("forestOrganismFeedback");
+
+    if (selectedLayer === correctLayer) {
 
         forestOrganismCorrect++;
 
+        feedback.textContent = "✅ Dobrze!";
+        feedback.className = "feedback correct";
 
         document
-            .getElementById(
-                "forestOrganismMessage"
-            )
-            .textContent =
-            "✅ Dobrze!";
-
-
-        document
-            .getElementById(
-                "forestOrganismMessage"
-            )
-            .className =
-            "message correct";
-
-
-        document
-            .querySelectorAll(
-                "#forestOrganismAnswers button"
-            )
+            .querySelectorAll("#forestOrganismAnswers button")
             .forEach(button => {
-
                 button.disabled = true;
-
+                button.blur();
             });
 
+        setTimeout(() => {
 
-        forestOrganismIndex++;
+            forestOrganismIndex++;
 
+            if (
+                forestOrganismIndex <
+                forestOrganismQuestions.length
+            ) {
+                showForestOrganismQuestion();
+            } else {
+                finishForestOrganismQuiz();
+            }
 
-        setTimeout(
-            showForestOrganismQuestion,
-            600
-        );
+            clearButtonFocus();
 
+        }, 700);
 
     } else {
 
-        document
-            .getElementById(
-                "forestOrganismMessage"
-            )
-            .textContent =
-            "❌ Nie ta warstwa. Spróbuj jeszcze raz!";
+        feedback.textContent =
+            "❌ Nie tym razem. Spróbuj jeszcze raz.";
 
+        feedback.className = "feedback wrong";
 
-        document
-            .getElementById(
-                "forestOrganismMessage"
-            )
-            .className =
-            "message wrong";
+        const task =
+            forestOrganismQuestions[forestOrganismIndex];
+
+        /*
+            Przy błędnej odpowiedzi nie przechodzimy dalej.
+            Trzeba spróbować ponownie.
+        */
     }
-}
 
+    clearButtonFocus();
+}
 
 function finishForestOrganismQuiz() {
-
     hideAll();
 
-    document
-        .getElementById("summary")
-        .classList.remove("hidden");
+    document.getElementById("summary").classList.add("active");
 
+    document.getElementById("summaryContent").innerHTML = `
+        <div class="summary-score">
+            ${forestOrganismCorrect} / ${FOREST_ORGANISM_TOTAL}
+        </div>
 
-    document
-        .getElementById("summaryText")
-        .innerHTML =
-        `🐾 Świetnie!<br><br>
+        <p>
+            Brawo! Ukończyłeś ćwiczenie
+            <strong>„Co mieszka w tej warstwie?”</strong>.
+        </p>
 
-        Dopasowania:
-        <strong>${forestOrganismCorrect}</strong>
-        / ${FOREST_ORGANISM_TOTAL}<br><br>
-
-        Zapamiętujesz coraz więcej
-        o mieszkańcach lasu! 🌲`;
+        <p>
+            Wynik w pierwszym podejściu:
+            <strong>${forestOrganismCorrect}</strong>
+            poprawnych odpowiedzi.
+        </p>
+    `;
 }
-
 
 
 /* =========================================================
@@ -3143,446 +1843,246 @@ function finishForestOrganismQuiz() {
 ========================================================= */
 
 let forestLayerQuestions = [];
-
 let forestLayerIndex = 0;
-
 let forestLayerCorrect = 0;
 
 const FOREST_LAYER_TOTAL = 12;
 
-
 function buildForestLayerQuestions() {
 
-    forestLayerQuestions = [];
+    return [
+        {
+            layer: "canopy",
+            answer: "Dąb"
+        },
+        {
+            layer: "canopy",
+            answer: "Dzięcioł"
+        },
+        {
+            layer: "canopy",
+            answer: "Sosna"
+        },
 
+        {
+            layer: "understory",
+            answer: "Jarzębina"
+        },
+        {
+            layer: "understory",
+            answer: "Jałowiec"
+        },
+        {
+            layer: "understory",
+            answer: "Sarna"
+        },
 
-    const addQuestion = (
-        layer,
-        item,
-        type
-    ) => {
+        {
+            layer: "ground",
+            answer: "Paproć"
+        },
+        {
+            layer: "ground",
+            answer: "Borówka czarna"
+        },
+        {
+            layer: "ground",
+            answer: "Jeż"
+        },
 
-        forestLayerQuestions.push({
-
-            layer: layer,
-
-            item: item,
-
-            type: type
-
-        });
-
-    };
-
-
-    /* KORONY */
-
-    addQuestion(
-        "canopy",
-        "Dąb",
-        "roślina"
-    );
-
-    addQuestion(
-        "canopy",
-        "Dzięcioł",
-        "zwierzę"
-    );
-
-    addQuestion(
-        "canopy",
-        "Sosna",
-        "roślina"
-    );
-
-
-    /* PODSZYT */
-
-    addQuestion(
-        "understory",
-        "Jarzębina",
-        "roślina"
-    );
-
-    addQuestion(
-        "understory",
-        "Jałowiec",
-        "roślina"
-    );
-
-    addQuestion(
-        "understory",
-        "Sarna",
-        "zwierzę"
-    );
-
-
-    /* RUNO */
-
-    addQuestion(
-        "ground",
-        "Paproć",
-        "roślina"
-    );
-
-    addQuestion(
-        "ground",
-        "Borówka czarna",
-        "roślina"
-    );
-
-    addQuestion(
-        "ground",
-        "Jeż",
-        "zwierzę"
-    );
-
-
-    /* ŚCIÓŁKA */
-
-    addQuestion(
-        "litter",
-        "Dżdżownica",
-        "zwierzę"
-    );
-
-    addQuestion(
-        "litter",
-        "Stonoga",
-        "zwierzę"
-    );
-
-    addQuestion(
-        "litter",
-        "Żuk",
-        "zwierzę"
-    );
-
-
-    forestLayerQuestions.sort(
-        () => Math.random() - 0.5
-    );
+        {
+            layer: "litter",
+            answer: "Dżdżownica"
+        },
+        {
+            layer: "litter",
+            answer: "Stonoga"
+        },
+        {
+            layer: "litter",
+            answer: "Żuk"
+        }
+    ];
 }
-
 
 function startForestLayerQuiz() {
 
-    hideAll();
+    forestLayerQuestions =
+        buildForestLayerQuestions();
 
     forestLayerIndex = 0;
-
     forestLayerCorrect = 0;
 
-    buildForestLayerQuestions();
+    hideAll();
 
     document
         .getElementById("forestLayerQuiz")
-        .classList.remove("hidden");
+        .classList.add("active");
 
     showForestLayerQuestion();
 }
 
-
 function showForestLayerQuestion() {
 
-    if (
-        forestLayerIndex >=
-        forestLayerQuestions.length
-    ) {
+    const task =
+        forestLayerQuestions[forestLayerIndex];
 
-        finishForestLayerQuiz();
+    const layer =
+        forestData[task.layer];
 
-        return;
-    }
+    document.getElementById("forestLayerProgress").textContent =
+        `Pytanie ${forestLayerIndex + 1} z ${FOREST_LAYER_TOTAL}`;
 
+    document.getElementById("forestLayerIcon").textContent =
+        layer.icon;
 
-    const question =
-        forestLayerQuestions[
-            forestLayerIndex
-        ];
+    document.getElementById("forestLayerQuestion").textContent =
+        `Co znajdziemy w warstwie: ${layer.name}?`;
 
+    document.getElementById("forestLayerFeedback").textContent = "";
 
-    document
-        .getElementById(
-            "forestLayerQuizNumber"
-        )
-        .textContent =
-        forestLayerIndex + 1;
+    createForestOrganismAnswers(task);
 
-
-    document
-        .getElementById(
-            "forestLayerQuizTotal"
-        )
-        .textContent =
-        FOREST_LAYER_TOTAL;
-
-
-    document
-        .getElementById(
-            "forestLayerQuizName"
-        )
-        .textContent =
-        forestData[
-            question.layer
-        ].name;
-
-
-    document
-        .getElementById(
-            "forestLayerIcon"
-        )
-        .textContent =
-        forestData[
-            question.layer
-        ].icon;
-
-
-    document
-        .getElementById(
-            "forestLayerMessage"
-        )
-        .textContent = "";
-
-
-    createForestOrganismAnswers(
-        question
-    );
+    clearButtonFocus();
 }
 
+function createForestOrganismAnswers(task) {
 
-function createForestOrganismAnswers(
-    question
-) {
+    const area =
+        document.getElementById("forestLayerAnswers");
 
-    const container =
-        document.getElementById(
-            "forestLayerAnswers"
-        );
-
-    container.innerHTML = "";
-
-
-    /*
-       Tworzymy 4 odpowiedzi.
-       Jedna jest poprawna.
-       Pozostałe są losowane z innych warstw.
-    */
-
-    const correct =
-        question.item;
-
-
-    let options = [
-        correct
-    ];
-
+    area.innerHTML = "";
 
     const allItems = [];
 
+    Object.keys(forestData).forEach(layerKey => {
 
-    Object.keys(
-        forestData
-    ).forEach(layer => {
+        const data = forestData[layerKey];
 
-        forestData[layer]
-            .plants
-            .forEach(item => {
+        data.plants.forEach(item => {
+            allItems.push(item);
+        });
 
-                allItems.push({
-                    item: item,
-                    type: "roślina"
-                });
+        data.animals.forEach(item => {
+            allItems.push(item);
+        });
 
-            });
-
-
-        forestData[layer]
-            .animals
-            .forEach(item => {
-
-                allItems.push({
-                    item: item,
-                    type: "zwierzę"
-                });
-
-            });
-
-
-        if (forestData[layer].materials) {
-
-            forestData[layer]
-                .materials
-                .forEach(item => {
-
-                    allItems.push({
-                        item: item,
-                        type: "element ściółki"
-                    });
-
-                });
-
-        }
-
+        /*
+            Materiały ściółki nie są roślinami ani zwierzętami,
+            więc nie dodajemy ich do tego quizu.
+        */
     });
 
+    const answers = new Set();
 
-    const shuffled =
-        allItems.sort(
-            () => Math.random() - 0.5
-        );
+    answers.add(task.answer);
 
+    while (answers.size < 4) {
+        const randomItem =
+            allItems[
+                Math.floor(Math.random() * allItems.length)
+            ];
 
-    for (
-        const candidate of shuffled
-    ) {
-
-        if (
-            options.length >= 4
-        ) {
-            break;
-        }
-
-
-        if (
-            candidate.item !==
-            correct &&
-            !options.includes(
-                candidate.item
-            )
-        ) {
-
-            options.push(
-                candidate.item
-            );
-        }
+        answers.add(randomItem);
     }
 
+    Array.from(answers)
+        .sort(() => Math.random() - 0.5)
+        .forEach(answer => {
 
-    options.sort(
-        () => Math.random() - 0.5
-    );
+            const button =
+                document.createElement("button");
 
+            button.className = "forest-answer";
+            button.textContent = answer;
 
-    options.forEach(option => {
+            button.onclick = () => {
+                checkForestLayerAnswer(
+                    answer,
+                    task.answer,
+                    button
+                );
+            };
 
-        const button =
-            document.createElement("button");
-
-        button.className =
-            "forest-answer";
-
-        button.textContent =
-            option;
-
-
-        button.onclick = function() {
-
-            checkForestLayerAnswer(
-                option,
-                question
-            );
-
-        };
-
-
-        container.appendChild(button);
-
-    });
+            area.appendChild(button);
+        });
 }
 
-
 function checkForestLayerAnswer(
-    answer,
-    question
+    selectedAnswer,
+    correctAnswer,
+    clickedButton
 ) {
+    clearButtonFocus();
 
-    if (
-        answer ===
-        question.item
-    ) {
+    const feedback =
+        document.getElementById("forestLayerFeedback");
+
+    if (selectedAnswer === correctAnswer) {
 
         forestLayerCorrect++;
 
+        feedback.textContent = "✅ Dobrze!";
+        feedback.className = "feedback correct";
 
         document
-            .getElementById(
-                "forestLayerMessage"
-            )
-            .textContent =
-            "✅ Dobrze!";
-
-
-        document
-            .getElementById(
-                "forestLayerMessage"
-            )
-            .className =
-            "message correct";
-
-
-        document
-            .querySelectorAll(
-                "#forestLayerAnswers button"
-            )
+            .querySelectorAll("#forestLayerAnswers button")
             .forEach(button => {
-
                 button.disabled = true;
-
+                button.blur();
             });
 
+        setTimeout(() => {
 
-        forestLayerIndex++;
+            forestLayerIndex++;
 
+            if (
+                forestLayerIndex <
+                forestLayerQuestions.length
+            ) {
+                showForestLayerQuestion();
+            } else {
+                finishForestLayerQuiz();
+            }
 
-        setTimeout(
-            showForestLayerQuestion,
-            600
-        );
+            clearButtonFocus();
 
+        }, 700);
 
     } else {
 
-        document
-            .getElementById(
-                "forestLayerMessage"
-            )
-            .textContent =
-            "❌ Nie pasuje do tej warstwy. Spróbuj ponownie!";
+        feedback.textContent =
+            "❌ Nie tym razem. Spróbuj jeszcze raz.";
 
-
-        document
-            .getElementById(
-                "forestLayerMessage"
-            )
-            .className =
-            "message wrong";
+        feedback.className = "feedback wrong";
     }
-}
 
+    clearButtonFocus();
+}
 
 function finishForestLayerQuiz() {
 
     hideAll();
 
-    document
-        .getElementById("summary")
-        .classList.remove("hidden");
+    document.getElementById("summary").classList.add("active");
 
+    document.getElementById("summaryContent").innerHTML = `
+        <div class="summary-score">
+            ${forestLayerCorrect} / ${FOREST_LAYER_TOTAL}
+        </div>
 
-    document
-        .getElementById("summaryText")
-        .innerHTML =
-        `🔎 Świetnie!<br><br>
+        <p>
+            Brawo! Ukończyłeś ćwiczenie
+            <strong>„Co znajdziemy w tej warstwie?”</strong>.
+        </p>
 
-        Poprawne dopasowania:
-        <strong>${forestLayerCorrect}</strong>
-        / ${FOREST_LAYER_TOTAL}<br><br>
-
-        Znasz już mieszkańców
-        poszczególnych warstw lasu! 🌲`;
+        <p>
+            Wynik w pierwszym podejściu:
+            <strong>${forestLayerCorrect}</strong>
+            poprawnych odpowiedzi.
+        </p>
+    `;
 }
-
 
 
 /* =========================================================
@@ -3590,481 +2090,266 @@ function finishForestLayerQuiz() {
 ========================================================= */
 
 const videoQuestions = [
-
     {
-        question:
-            "Which animal stomps?",
-
+        question: "Which animal stomps?",
         answers: [
-            "🐘 Elephants",
-            "🐧 Penguins",
-            "🐒 Monkeys",
-            "🐍 Snakes"
+            "Elephants",
+            "Penguins",
+            "Snakes",
+            "Monkeys"
         ],
-
-        correct: 0
+        correct: "Elephants"
     },
-
-
     {
-        question:
-            "Which animal jumps?",
-
+        question: "Which animal jumps?",
         answers: [
-            "🐻 Polar bears",
-            "🦘 Kangaroos",
-            "🐘 Elephants",
-            "🐧 Penguins"
+            "Kangaroos",
+            "Elephants",
+            "Penguins",
+            "Snakes"
         ],
-
-        correct: 1
+        correct: "Kangaroos"
     },
-
-
     {
-        question:
-            "Which animal swings?",
-
+        question: "Which animal swings?",
         answers: [
-            "🐒 Monkeys",
-            "🐍 Snakes",
-            "🐧 Penguins",
-            "🦘 Kangaroos"
+            "Monkeys",
+            "Penguins",
+            "Kangaroos",
+            "Elephants"
         ],
-
-        correct: 0
+        correct: "Monkeys"
     },
-
-
     {
-        question:
-            "Which animal waddles?",
-
+        question: "Which animal waddles?",
         answers: [
-            "🐘 Elephants",
-            "🐻 Polar bears",
-            "🐧 Penguins",
-            "🐒 Monkeys"
+            "Penguins",
+            "Monkeys",
+            "Snakes",
+            "Kangaroos"
         ],
-
-        correct: 2
+        correct: "Penguins"
     },
-
-
     {
-        question:
-            "Which animal slithers?",
-
+        question: "Which animal slithers?",
         answers: [
-            "🐍 Snakes",
-            "🐧 Penguins",
-            "🐘 Elephants",
-            "🦘 Kangaroos"
+            "Snakes",
+            "Elephants",
+            "Monkeys",
+            "Penguins"
         ],
-
-        correct: 0
+        correct: "Snakes"
     }
-
 ];
 
-
-let videoQuestionIndex = 0;
-
+let videoIndex = 0;
 let videoCorrect = 0;
 
+const practiceSentences = [
+    "Let's go to the zoo.",
+    "Stomp like the elephants do.",
+    "Jump like the kangaroos do.",
+    "Swing like the monkeys do.",
+    "Waddle like the penguins do."
+];
 
-function startVideoLesson() {
-
+function showVideoLesson() {
     hideAll();
 
     document
         .getElementById("videoLesson")
-        .classList.remove("hidden");
+        .classList.add("active");
 }
-
 
 function startVideoQuestions() {
 
-    videoQuestionIndex = 0;
-
+    videoIndex = 0;
     videoCorrect = 0;
 
     hideAll();
 
     document
         .getElementById("videoQuestions")
-        .classList.remove("hidden");
+        .classList.add("active");
 
     showVideoQuestion();
 }
 
-
 function showVideoQuestion() {
 
-    const question =
-        videoQuestions[
-            videoQuestionIndex
-        ];
+    const task = videoQuestions[videoIndex];
 
+    document.getElementById("videoProgress").textContent =
+        `Pytanie ${videoIndex + 1} z ${videoQuestions.length}`;
 
-    document
-        .getElementById(
-            "videoQuestionNumber"
-        )
-        .textContent =
-        videoQuestionIndex + 1;
+    document.getElementById("videoQuestion").textContent =
+        task.question;
 
+    document.getElementById("videoFeedback").textContent = "";
 
-    document
-        .getElementById(
-            "videoTotalQuestions"
-        )
-        .textContent =
-        videoQuestions.length;
+    const area =
+        document.getElementById("videoAnswers");
 
+    area.innerHTML = "";
 
-    document
-        .getElementById(
-            "videoQuestion"
-        )
-        .textContent =
-        question.question;
-
-
-    document
-        .getElementById(
-            "videoMessage"
-        )
-        .textContent = "";
-
-
-    const container =
-        document.getElementById(
-            "videoAnswers"
-        );
-
-    container.innerHTML = "";
-
-
-    question.answers.forEach(
-        (answer, index) => {
+    task.answers
+        .sort(() => Math.random() - 0.5)
+        .forEach(answer => {
 
             const button =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
-            button.className =
-                "answer";
+            button.className = "answer-button";
+            button.textContent = answer;
 
-            button.textContent =
-                answer;
+            button.onclick = () => {
+                checkVideoAnswer(answer);
+            };
 
-
-            button.onclick =
-                function() {
-
-                    checkVideoAnswer(
-                        index
-                    );
-
-                };
-
-
-            container.appendChild(
-                button
-            );
-
-        }
-    );
+            area.appendChild(button);
+        });
 }
 
+function checkVideoAnswer(answer) {
 
-function checkVideoAnswer(index) {
+    const task = videoQuestions[videoIndex];
 
-    const question =
-        videoQuestions[
-            videoQuestionIndex
-        ];
+    const feedback =
+        document.getElementById("videoFeedback");
 
-
-    if (
-        index ===
-        question.correct
-    ) {
+    if (answer === task.correct) {
 
         videoCorrect++;
 
+        feedback.textContent = "✅ Correct!";
+        feedback.className = "feedback correct";
 
         document
-            .getElementById(
-                "videoMessage"
-            )
-            .textContent =
-            "✅ Correct!";
-
-
-        document
-            .getElementById(
-                "videoMessage"
-            )
-            .className =
-            "message correct";
-
-
-        document
-            .querySelectorAll(
-                "#videoAnswers button"
-            )
+            .querySelectorAll("#videoAnswers button")
             .forEach(button => {
-
                 button.disabled = true;
-
             });
-
-
-        videoQuestionIndex++;
-
 
         setTimeout(() => {
 
-            if (
-                videoQuestionIndex >=
-                videoQuestions.length
-            ) {
+            videoIndex++;
 
-                startSentencePractice();
-
-            } else {
-
+            if (videoIndex < videoQuestions.length) {
                 showVideoQuestion();
+            } else {
+                showVideoSentences();
             }
 
-        }, 600);
-
+        }, 700);
 
     } else {
 
-        document
-            .getElementById(
-                "videoMessage"
-            )
-            .textContent =
-            "❌ Spróbuj jeszcze raz!";
+        feedback.textContent =
+            "❌ Try again.";
 
-
-        document
-            .getElementById(
-                "videoMessage"
-            )
-            .className =
-            "message wrong";
+        feedback.className =
+            "feedback wrong";
     }
+
+    clearButtonFocus();
 }
 
-
-
-/* =========================================================
-   ZDANIA
-========================================================= */
-
-const practiceSentences = [
-
-    "Let's go to the zoo.",
-
-    "Stomp like the elephants do.",
-
-    "Jump like the kangaroos do.",
-
-    "Swing like the monkeys do.",
-
-    "Waddle like the penguins do."
-
-];
-
-
-let practiceIndex = 0;
-
-
-function startSentencePractice() {
-
-    practiceIndex = 0;
+function showVideoSentences() {
 
     hideAll();
 
     document
-        .getElementById(
-            "videoSentences"
-        )
-        .classList.remove("hidden");
+        .getElementById("videoSentences")
+        .classList.add("active");
 
-    showPracticeSentence();
+    const list =
+        document.getElementById("sentenceList");
+
+    list.innerHTML = "";
+
+    practiceSentences.forEach(sentence => {
+
+        const box =
+            document.createElement("div");
+
+        box.className = "sentence-box";
+
+        box.innerHTML = `
+            <div class="sentence">
+                ${sentence}
+            </div>
+
+            <button>
+                🔊 Posłuchaj
+            </button>
+        `;
+
+        const button =
+            box.querySelector("button");
+
+        button.onclick = () => {
+            speakEnglish(sentence);
+        };
+
+        list.appendChild(box);
+    });
 }
 
+function speakEnglish(text) {
 
-function showPracticeSentence() {
-
-    document
-        .getElementById(
-            "practiceSentence"
-        )
-        .textContent =
-        practiceSentences[
-            practiceIndex
-        ];
-
-
-    document
-        .getElementById(
-            "sentenceProgress"
-        )
-        .textContent =
-        `Zdanie ${practiceIndex + 1}
-        / ${practiceSentences.length}`;
-}
-
-
-function speakCurrentSentence() {
-
-    const sentence =
-        practiceSentences[
-            practiceIndex
-        ];
-
-
-    if (
-        "speechSynthesis" in window
-    ) {
-
-        window
-            .speechSynthesis
-            .cancel();
-
-
-        const utterance =
-            new SpeechSynthesisUtterance(
-                sentence
-            );
-
-
-        utterance.lang =
-            "en-US";
-
-        utterance.rate =
-            0.85;
-
-
-        window
-            .speechSynthesis
-            .speak(
-                utterance
-            );
-
-
-    } else {
-
-        alert(
-            "Twoja przeglądarka nie obsługuje odczytywania tekstu."
-        );
-    }
-}
-
-
-function nextPracticeSentence() {
-
-    practiceIndex++;
-
-
-    if (
-        practiceIndex >=
-        practiceSentences.length
-    ) {
-
-        finishVideoLesson();
-
+    if (!("speechSynthesis" in window)) {
+        alert("Twoja przeglądarka nie obsługuje odczytywania tekstu.");
         return;
     }
 
+    window.speechSynthesis.cancel();
 
-    showPracticeSentence();
+    const utterance =
+        new SpeechSynthesisUtterance(text);
+
+    utterance.lang = "en-US";
+    utterance.rate = 0.85;
+
+    window.speechSynthesis.speak(utterance);
 }
-
-
-function finishVideoLesson() {
-
-    hideAll();
-
-    document
-        .getElementById("summary")
-        .classList.remove("hidden");
-
-
-    document
-        .getElementById("summaryText")
-        .innerHTML =
-        `🎬 <strong>English Mission complete!</strong><br><br>
-
-        👂 Rozumienie filmu:
-        <strong>${videoCorrect}
-        / ${videoQuestions.length}</strong><br><br>
-
-        🗣️ Powtórzyłeś:
-        <strong>${practiceSentences.length}</strong>
-        zdań po angielsku.<br><br>
-
-        ⭐ Świetna robota!`;
-}
-
 
 
 /* =========================================================
-   ENTER – WPISYWANIE
+   ENTER – WPISYWANIE ODPOWIEDZI
 ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+document.addEventListener("keydown", function(event) {
 
-        if (
-            event.key !==
-            "Enter"
-        ) {
-            return;
-        }
-
-
-        const gameVisible =
-            !document
-                .getElementById("game")
-                .classList
-                .contains("hidden");
-
-
-        if (
-            gameVisible &&
-            gameMode === "input"
-        ) {
-
-            checkInputAnswer();
-
-        }
-
-
-        const revisionVisible =
-            !document
-                .getElementById("revision")
-                .classList
-                .contains("hidden");
-
-
-        if (revisionVisible) {
-
-            checkRevision();
-
-        }
-
+    if (event.key !== "Enter") {
+        return;
     }
-);
+
+    const game =
+        document.getElementById("game");
+
+    if (game.classList.contains("active")) {
+
+        const input =
+            document.getElementById("mathInput");
+
+        if (input && document.activeElement === input) {
+            checkInputAnswer();
+        }
+    }
+
+    const revision =
+        document.getElementById("revision");
+
+    if (revision.classList.contains("active")) {
+
+        const input =
+            document.getElementById("revisionInput");
+
+        if (input && document.activeElement === input) {
+            checkRevision();
+        }
+    }
+});
 
 </script>
 
