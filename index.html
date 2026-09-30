@@ -86,7 +86,7 @@
 
     button:disabled {
         cursor: default;
-        opacity: 0.8;
+        opacity: 0.7;
     }
 
     .main-grid {
@@ -124,7 +124,7 @@
         background: white;
         border-radius: 18px;
         padding: 25px;
-        max-width: 750px;
+        max-width: 780px;
         margin: 25px auto;
         box-shadow: 0 4px 14px rgba(0,0,0,0.08);
         text-align: center;
@@ -208,7 +208,9 @@
         margin: 20px 0;
     }
 
-    /* ==================== PRZYGOTOWANIE DO KARTKÓWKI ==================== */
+    /* =====================================================
+       PRZYGOTOWANIE DO KARTKÓWKI
+    ===================================================== */
 
     .math-prep-grid {
         display: grid;
@@ -269,11 +271,11 @@
         align-items: center;
         gap: 10px;
         flex-wrap: wrap;
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     .time-input {
-        width: 90px;
+        width: 100px;
         padding: 12px;
         font-size: 22px;
         text-align: center;
@@ -286,22 +288,20 @@
         border-color: #66bb6a;
     }
 
-    .time-separator {
-        font-size: 25px;
-        font-weight: bold;
-    }
-
     .elapsed-label {
         font-size: 16px;
         color: #546e7a;
+        margin-top: 15px;
     }
 
-    /* ==================== ZEGAR ==================== */
+    /* =====================================================
+       ZEGAR
+    ===================================================== */
 
     .clock {
         position: relative;
-        width: 230px;
-        height: 230px;
+        width: 260px;
+        height: 260px;
         margin: 25px auto;
         border: 8px solid #2e7d32;
         border-radius: 50%;
@@ -318,6 +318,7 @@
         text-align: center;
         font-weight: bold;
         font-size: 18px;
+        line-height: 30px;
         color: #234b2a;
     }
 
@@ -330,40 +331,64 @@
     }
 
     .hour-hand {
-        width: 7px;
-        height: 58px;
+        width: 8px;
+        height: 65px;
         background: #234b2a;
-        margin-left: -3.5px;
+        margin-left: -4px;
+        z-index: 3;
     }
 
     .minute-hand {
         width: 5px;
-        height: 82px;
+        height: 92px;
         background: #4caf50;
         margin-left: -2.5px;
+        z-index: 4;
     }
 
     .clock-center {
         position: absolute;
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         background: #2e7d32;
         border-radius: 50%;
         left: 50%;
         top: 50%;
-        margin-left: -7px;
-        margin-top: -7px;
-        z-index: 5;
+        margin-left: -8px;
+        margin-top: -8px;
+        z-index: 6;
     }
 
-    .digital-time {
-        font-size: 24px;
+    .day-period {
+        display: inline-block;
+        background: #f1f8f1;
+        padding: 10px 18px;
+        border-radius: 12px;
+        font-size: 18px;
         font-weight: bold;
-        margin-top: 10px;
         color: #2e7d32;
+        margin-bottom: 15px;
     }
 
-    /* ==================== ZADANIA TEKSTOWE ==================== */
+    /* =====================================================
+       UPŁYW CZASU
+    ===================================================== */
+
+    .time-question {
+        font-size: 27px;
+        line-height: 1.5;
+        margin: 25px 0;
+    }
+
+    .time-value {
+        color: #2e7d32;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    /* =====================================================
+       ZADANIA TEKSTOWE
+    ===================================================== */
 
     .word-problem {
         background: #f1f8f1;
@@ -381,7 +406,15 @@
         margin-top: 12px;
     }
 
-    /* ==================== VIDEO ==================== */
+    .money-note {
+        font-size: 15px;
+        color: #607d8b;
+        margin-top: 10px;
+    }
+
+    /* =====================================================
+       VIDEO
+    ===================================================== */
 
     .video-container {
         position: relative;
@@ -437,13 +470,17 @@
         }
 
         .clock {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
         }
 
         .sentence-box {
             flex-direction: column;
             align-items: stretch;
+        }
+
+        .time-question {
+            font-size: 22px;
         }
     }
 </style>
@@ -469,7 +506,7 @@
 
     <div class="main-grid">
 
-        <!-- TABLICZKA -->
+        <!-- TABLICZKA MNOŻENIA -->
 
         <div class="module-card">
 
@@ -519,7 +556,7 @@
         </div>
 
 
-        <!-- PRZYGOTOWANIE DO KARTKÓWKI -->
+        <!-- KARTKÓWKA -->
 
         <div class="module-card">
 
@@ -576,9 +613,7 @@
 
     <div class="top-buttons">
 
-        <button
-            class="secondary"
-            onclick="showMenu()">
+        <button class="secondary" onclick="showMenu()">
             ← Menu
         </button>
 
@@ -590,22 +625,13 @@
 
         <div id="mathProgress"></div>
 
-        <div
-            id="mathQuestion"
-            class="question">
-        </div>
+        <div id="mathQuestion" class="question"></div>
 
         <div id="mathInputArea"></div>
 
-        <div
-            id="mathAnswers"
-            class="answers">
-        </div>
+        <div id="mathAnswers" class="answers"></div>
 
-        <div
-            id="mathFeedback"
-            class="feedback">
-        </div>
+        <div id="mathFeedback" class="feedback"></div>
 
     </div>
 
@@ -620,9 +646,7 @@
 
     <div class="top-buttons">
 
-        <button
-            class="secondary"
-            onclick="showMenu()">
+        <button class="secondary" onclick="showMenu()">
             ← Menu
         </button>
 
@@ -634,10 +658,7 @@
 
         <div id="revisionProgress"></div>
 
-        <div
-            id="revisionQuestion"
-            class="question">
-        </div>
+        <div id="revisionQuestion" class="question"></div>
 
         <input
             id="revisionInput"
@@ -652,10 +673,7 @@
             Sprawdź
         </button>
 
-        <div
-            id="revisionFeedback"
-            class="feedback">
-        </div>
+        <div id="revisionFeedback" class="feedback"></div>
 
     </div>
 
@@ -670,9 +688,7 @@
 
     <div class="top-buttons">
 
-        <button
-            class="secondary"
-            onclick="showMenu()">
+        <button class="secondary" onclick="showMenu()">
             ← Menu
         </button>
 
@@ -684,20 +700,11 @@
 
         <div id="englishProgress"></div>
 
-        <div
-            id="englishQuestion"
-            class="question">
-        </div>
+        <div id="englishQuestion" class="question"></div>
 
-        <div
-            id="englishAnswers"
-            class="answers">
-        </div>
+        <div id="englishAnswers" class="answers"></div>
 
-        <div
-            id="englishFeedback"
-            class="feedback">
-        </div>
+        <div id="englishFeedback" class="feedback"></div>
 
     </div>
 
@@ -712,9 +719,7 @@
 
     <div class="top-buttons">
 
-        <button
-            class="secondary"
-            onclick="showMenu()">
+        <button class="secondary" onclick="showMenu()">
             ← Menu
         </button>
 
@@ -726,20 +731,11 @@
 
         <div id="englishRevisionProgress"></div>
 
-        <div
-            id="englishRevisionQuestion"
-            class="question">
-        </div>
+        <div id="englishRevisionQuestion" class="question"></div>
 
-        <div
-            id="englishRevisionAnswers"
-            class="answers">
-        </div>
+        <div id="englishRevisionAnswers" class="answers"></div>
 
-        <div
-            id="englishRevisionFeedback"
-            class="feedback">
-        </div>
+        <div id="englishRevisionFeedback" class="feedback"></div>
 
     </div>
 
@@ -754,9 +750,7 @@
 
     <div class="top-buttons">
 
-        <button
-            class="secondary"
-            onclick="showMenu()">
+        <button class="secondary" onclick="showMenu()">
             ← Menu główne
         </button>
 
@@ -767,6 +761,7 @@
     <div class="prep-info">
 
         Wybierz temat, który chcesz poćwiczyć.
+
         <br>
 
         <strong>
@@ -782,14 +777,11 @@
 
     <div class="math-prep-grid">
 
-
-        <!-- GODZINY -->
+        <!-- ZEGAR -->
 
         <div class="prep-card">
 
-            <div class="prep-icon">
-                🕐
-            </div>
+            <div class="prep-icon">🕐</div>
 
             <h3>
                 Odczytywanie i zapisywanie godziny
@@ -811,9 +803,7 @@
 
         <div class="prep-card">
 
-            <div class="prep-icon">
-                ⏱️
-            </div>
+            <div class="prep-icon">⏱️</div>
 
             <h3>
                 Ile czasu minęło?
@@ -831,13 +821,11 @@
         </div>
 
 
-        <!-- DODAWANIE ODEJMOWANIE -->
+        <!-- DZIAŁANIA -->
 
         <div class="prep-card">
 
-            <div class="prep-icon">
-                ➕➖
-            </div>
+            <div class="prep-icon">➕➖</div>
 
             <h3>
                 Dodawanie i odejmowanie
@@ -859,9 +847,7 @@
 
         <div class="prep-card">
 
-            <div class="prep-icon">
-                ❓
-            </div>
+            <div class="prep-icon">❓</div>
 
             <h3>
                 Brakująca liczba
@@ -869,34 +855,11 @@
 
             <p>
                 Uzupełniaj działania,
-                w których brakuje jednej liczby.
+                w których brakuje liczby.
+                Dodawanie i odejmowanie.
             </p>
 
             <button onclick="startMathPrep('missing')">
-                Zacznij
-            </button>
-
-        </div>
-
-
-        <!-- BRAKUJĄCY SKŁADNIK -->
-
-        <div class="prep-card">
-
-            <div class="prep-icon">
-                🔎
-            </div>
-
-            <h3>
-                Brakujący składnik
-            </h3>
-
-            <p>
-                Oblicz brakujący składnik,
-                gdy znasz sumę i drugi składnik.
-            </p>
-
-            <button onclick="startMathPrep('addend')">
                 Zacznij
             </button>
 
@@ -907,17 +870,15 @@
 
         <div class="prep-card">
 
-            <div class="prep-icon">
-                📖
-            </div>
+            <div class="prep-icon">📖</div>
 
             <h3>
                 Zadania tekstowe
             </h3>
 
             <p>
-                Rozwiązuj proste zadania tekstowe
-                na poziomie 3 klasy szkoły podstawowej.
+                Rozwiązuj zadania matematyczne,
+                także zadania z pieniędzmi.
             </p>
 
             <button onclick="startMathPrep('word')">
@@ -960,6 +921,7 @@
     <div class="question-box">
 
         <div id="mathPrepProgress"></div>
+
 
         <!-- ZEGAR -->
 
@@ -1057,6 +1019,11 @@
 
             </div>
 
+            <div
+                id="dayPeriod"
+                class="day-period">
+            </div>
+
         </div>
 
 
@@ -1066,7 +1033,7 @@
         </div>
 
 
-        <!-- ZWYKŁY INPUT -->
+        <!-- ZWYKŁE POLE ODPOWIEDZI -->
 
         <div id="mathPrepInputArea"></div>
 
@@ -1092,19 +1059,13 @@
                     placeholder="0"
                 >
 
-                <span>
-                    godz.
-                </span>
+                <span>godz.</span>
 
             </div>
 
 
-            <div
-                class="elapsed-label"
-                style="margin-top:15px;">
-
+            <div class="elapsed-label">
                 Podaj liczbę minut:
-
             </div>
 
             <div class="time-input-row">
@@ -1118,9 +1079,7 @@
                     placeholder="0"
                 >
 
-                <span>
-                    min.
-                </span>
+                <span>min.</span>
 
             </div>
 
@@ -1156,9 +1115,7 @@
 
         <h2>🎉 Koniec ćwiczenia</h2>
 
-        <div
-            id="mathPrepSummaryContent">
-        </div>
+        <div id="mathPrepSummaryContent"></div>
 
         <div
             class="sub-buttons"
@@ -1195,9 +1152,7 @@
 
     <div class="top-buttons">
 
-        <button
-            class="secondary"
-            onclick="showMenu()">
+        <button class="secondary" onclick="showMenu()">
             ← Menu
         </button>
 
@@ -1219,11 +1174,7 @@
 
     </div>
 
-    <div
-        style="
-            text-align:center;
-            margin-top:25px;
-        ">
+    <div style="text-align:center; margin-top:25px;">
 
         <button onclick="startVideoQuestions()">
             🐘 Sprawdź, co pamiętasz
@@ -1242,9 +1193,7 @@
 
     <div class="top-buttons">
 
-        <button
-            class="secondary"
-            onclick="showMenu()">
+        <button class="secondary" onclick="showMenu()">
             ← Menu
         </button>
 
@@ -1256,20 +1205,11 @@
 
         <div id="videoProgress"></div>
 
-        <div
-            id="videoQuestion"
-            class="question">
-        </div>
+        <div id="videoQuestion" class="question"></div>
 
-        <div
-            id="videoAnswers"
-            class="answers">
-        </div>
+        <div id="videoAnswers" class="answers"></div>
 
-        <div
-            id="videoFeedback"
-            class="feedback">
-        </div>
+        <div id="videoFeedback" class="feedback"></div>
 
     </div>
 
@@ -1284,9 +1224,7 @@
 
     <div class="top-buttons">
 
-        <button
-            class="secondary"
-            onclick="showMenu()">
+        <button class="secondary" onclick="showMenu()">
             ← Menu
         </button>
 
@@ -1300,11 +1238,7 @@
 
     <div id="sentenceList"></div>
 
-    <div
-        style="
-            text-align:center;
-            margin-top:25px;
-        ">
+    <div style="text-align:center; margin-top:25px;">
 
         <button onclick="showMenu()">
             🏠 Zakończ
@@ -1316,7 +1250,7 @@
 
 
 <!-- =====================================================
-     PODSUMOWANIE
+     PODSUMOWANIE STARYCH MODUŁÓW
 ===================================================== -->
 
 <section id="summary">
@@ -1339,6 +1273,7 @@
 
 </section>
 
+
 </main>
 
 
@@ -1353,9 +1288,7 @@ function hideAll() {
     document
         .querySelectorAll("main section")
         .forEach(section => {
-
             section.classList.remove("active");
-
         });
 
 }
@@ -1381,9 +1314,7 @@ function clearButtonFocus() {
         active &&
         active.tagName === "BUTTON"
     ) {
-
         active.blur();
-
     }
 
 }
@@ -1394,38 +1325,24 @@ function clearButtonFocus() {
 ===================================================== */
 
 let mathMode = "tiles";
-
 let mathQuestions = [];
-
 let mathIndex = 0;
-
 let mathCorrect = 0;
-
 let mathRevision = [];
 
 
 function startGame(mode) {
 
     mathMode = mode;
-
     mathIndex = 0;
-
     mathCorrect = 0;
-
     mathRevision = [];
-
     mathQuestions = [];
 
-    for (
-        let i = 0;
-        i < 10;
-        i++
-    ) {
-
+    for (let i = 0; i < 10; i++) {
         mathQuestions.push(
             createMultiplicationTask()
         );
-
     }
 
     hideAll();
@@ -1442,14 +1359,10 @@ function startGame(mode) {
 function createMultiplicationTask() {
 
     const a =
-        Math.floor(
-            Math.random() * 10
-        ) + 1;
+        Math.floor(Math.random() * 10) + 1;
 
     const b =
-        Math.floor(
-            Math.random() * 10
-        ) + 1;
+        Math.floor(Math.random() * 10) + 1;
 
     return {
         a: a,
@@ -1486,7 +1399,6 @@ function nextMultiplicationQuestion() {
         document.getElementById("mathAnswers");
 
     inputArea.innerHTML = "";
-
     answersArea.innerHTML = "";
 
 
@@ -1511,9 +1423,12 @@ function nextMultiplicationQuestion() {
 
         setTimeout(() => {
 
-            document
-                .getElementById("mathInput")
-                .focus();
+            const input =
+                document.getElementById("mathInput");
+
+            if (input) {
+                input.focus();
+            }
 
         }, 50);
 
@@ -1528,17 +1443,14 @@ function nextMultiplicationQuestion() {
 
 function createTileAnswers(correctAnswer) {
 
-    const answers =
-        new Set();
+    const answers = new Set();
 
     answers.add(correctAnswer);
 
     while (answers.size < 4) {
 
         const offset =
-            Math.floor(
-                Math.random() * 11
-            ) - 5;
+            Math.floor(Math.random() * 11) - 5;
 
         const value =
             correctAnswer + offset;
@@ -1551,9 +1463,7 @@ function createTileAnswers(correctAnswer) {
 
     const shuffled =
         Array.from(answers)
-            .sort(
-                () => Math.random() - 0.5
-            );
+            .sort(() => Math.random() - 0.5);
 
     const area =
         document.getElementById("mathAnswers");
@@ -1563,17 +1473,13 @@ function createTileAnswers(correctAnswer) {
         const button =
             document.createElement("button");
 
-        button.className =
-            "answer-button";
-
-        button.textContent =
-            answer;
+        button.className = "answer-button";
+        button.textContent = answer;
 
         button.onclick = () => {
 
             checkMultiplicationAnswer(
-                answer,
-                button
+                answer
             );
 
         };
@@ -1585,10 +1491,7 @@ function createTileAnswers(correctAnswer) {
 }
 
 
-function checkMultiplicationAnswer(
-    answer,
-    clickedButton
-) {
+function checkMultiplicationAnswer(answer) {
 
     clearButtonFocus();
 
@@ -1603,20 +1506,13 @@ function checkMultiplicationAnswer(
 
         mathCorrect++;
 
-        feedback.textContent =
-            "✅ Dobrze!";
-
-        feedback.className =
-            "feedback correct";
+        feedback.textContent = "✅ Dobrze!";
+        feedback.className = "feedback correct";
 
         document
-            .querySelectorAll(
-                "#mathAnswers button"
-            )
+            .querySelectorAll("#mathAnswers button")
             .forEach(btn => {
-
                 btn.disabled = true;
-
             });
 
 
@@ -1624,17 +1520,10 @@ function checkMultiplicationAnswer(
 
             mathIndex++;
 
-            if (
-                mathIndex <
-                mathQuestions.length
-            ) {
-
+            if (mathIndex < mathQuestions.length) {
                 nextMultiplicationQuestion();
-
             } else {
-
                 finishGame();
-
             }
 
         }, 700);
@@ -1652,8 +1541,6 @@ function checkMultiplicationAnswer(
 
     }
 
-    clearButtonFocus();
-
 }
 
 
@@ -1662,6 +1549,10 @@ function checkInputAnswer() {
     const input =
         document.getElementById("mathInput");
 
+    if (!input || input.value.trim() === "") {
+        return;
+    }
+
     const value =
         Number(input.value);
 
@@ -1669,39 +1560,26 @@ function checkInputAnswer() {
         mathQuestions[mathIndex];
 
     const feedback =
-        document.getElementById(
-            "mathFeedback"
-        );
+        document.getElementById("mathFeedback");
 
 
     if (value === task.answer) {
 
         mathCorrect++;
 
-        feedback.textContent =
-            "✅ Dobrze!";
-
-        feedback.className =
-            "feedback correct";
+        feedback.textContent = "✅ Dobrze!";
+        feedback.className = "feedback correct";
 
         input.disabled = true;
-
 
         setTimeout(() => {
 
             mathIndex++;
 
-            if (
-                mathIndex <
-                mathQuestions.length
-            ) {
-
+            if (mathIndex < mathQuestions.length) {
                 nextMultiplicationQuestion();
-
             } else {
-
                 finishGame();
-
             }
 
         }, 700);
@@ -1784,9 +1662,7 @@ function showRevisionTask() {
         document.getElementById("revisionInput");
 
     input.value = "";
-
     input.disabled = false;
-
     input.focus();
 
 }
@@ -1796,6 +1672,10 @@ function checkRevision() {
 
     const input =
         document.getElementById("revisionInput");
+
+    if (!input || input.value.trim() === "") {
+        return;
+    }
 
     const value =
         Number(input.value);
@@ -1824,17 +1704,10 @@ function checkRevision() {
 
             mathIndex++;
 
-            if (
-                mathIndex <
-                mathRevision.length
-            ) {
-
+            if (mathIndex < mathRevision.length) {
                 showRevisionTask();
-
             } else {
-
                 showMathSummary();
-
             }
 
         }, 700);
@@ -1868,8 +1741,7 @@ function showMathSummary() {
         .innerHTML = `
 
             <div class="summary-score">
-                ${mathCorrect} /
-                ${mathQuestions.length}
+                ${mathCorrect} / ${mathQuestions.length}
             </div>
 
             <p>
@@ -2003,49 +1875,30 @@ const numberWords = {
 };
 
 
-let englishMode =
-    "numberToWord";
-
+let englishMode = "numberToWord";
 let englishQuestions = [];
-
 let englishIndex = 0;
-
 let englishCorrect = 0;
-
 let englishRevision = [];
 
 
 function startEnglishGame(mode) {
 
     englishMode = mode;
-
     englishQuestions = [];
-
     englishIndex = 0;
-
     englishCorrect = 0;
-
     englishRevision = [];
 
 
-    for (
-        let i = 0;
-        i < 10;
-        i++
-    ) {
+    for (let i = 0; i < 10; i++) {
 
         const number =
-            Math.floor(
-                Math.random() * 100
-            ) + 1;
+            Math.floor(Math.random() * 100) + 1;
 
         englishQuestions.push({
-
             number: number,
-
-            word:
-                numberWords[number]
-
+            word: numberWords[number]
         });
 
     }
@@ -2077,23 +1930,12 @@ function nextEnglishQuestion() {
         .textContent = "";
 
 
-    if (
+    document
+        .getElementById("englishQuestion")
+        .textContent =
         englishMode === "numberToWord"
-    ) {
-
-        document
-            .getElementById("englishQuestion")
-            .textContent =
-            task.number;
-
-    } else {
-
-        document
-            .getElementById("englishQuestion")
-            .textContent =
-            task.word;
-
-    }
+            ? task.number
+            : task.word;
 
 
     createEnglishAnswers(task);
@@ -2104,30 +1946,21 @@ function nextEnglishQuestion() {
 function createEnglishAnswers(task) {
 
     const area =
-        document.getElementById(
-            "englishAnswers"
-        );
+        document.getElementById("englishAnswers");
 
     area.innerHTML = "";
 
-    const answers =
-        new Set();
+    const answers = new Set();
 
 
-    if (
-        englishMode === "numberToWord"
-    ) {
+    if (englishMode === "numberToWord") {
 
         answers.add(task.word);
 
-        while (
-            answers.size < 4
-        ) {
+        while (answers.size < 4) {
 
             const number =
-                Math.floor(
-                    Math.random() * 100
-                ) + 1;
+                Math.floor(Math.random() * 100) + 1;
 
             answers.add(
                 numberWords[number]
@@ -2139,14 +1972,10 @@ function createEnglishAnswers(task) {
 
         answers.add(task.number);
 
-        while (
-            answers.size < 4
-        ) {
+        while (answers.size < 4) {
 
             answers.add(
-                Math.floor(
-                    Math.random() * 100
-                ) + 1
+                Math.floor(Math.random() * 100) + 1
             );
 
         }
@@ -2155,15 +1984,11 @@ function createEnglishAnswers(task) {
 
 
     Array.from(answers)
-        .sort(
-            () => Math.random() - 0.5
-        )
+        .sort(() => Math.random() - 0.5)
         .forEach(answer => {
 
             const button =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
             button.className =
                 "answer-button";
@@ -2173,10 +1998,7 @@ function createEnglishAnswers(task) {
 
             button.onclick = () => {
 
-                checkEnglishAnswer(
-                    answer,
-                    button
-                );
+                checkEnglishAnswer(answer);
 
             };
 
@@ -2187,10 +2009,7 @@ function createEnglishAnswers(task) {
 }
 
 
-function checkEnglishAnswer(
-    answer,
-    clickedButton
-) {
+function checkEnglishAnswer(answer) {
 
     clearButtonFocus();
 
@@ -2208,9 +2027,7 @@ function checkEnglishAnswer(
         );
 
 
-    if (
-        answer === correctAnswer
-    ) {
+    if (answer === correctAnswer) {
 
         englishCorrect++;
 
@@ -2226,9 +2043,7 @@ function checkEnglishAnswer(
                 "#englishAnswers button"
             )
             .forEach(btn => {
-
                 btn.disabled = true;
-
             });
 
 
@@ -2240,13 +2055,9 @@ function checkEnglishAnswer(
                 englishIndex <
                 englishQuestions.length
             ) {
-
                 nextEnglishQuestion();
-
             } else {
-
                 finishEnglishGame();
-
             }
 
         }, 700);
@@ -2264,9 +2075,6 @@ function checkEnglishAnswer(
 
     }
 
-
-    clearButtonFocus();
-
 }
 
 
@@ -2279,9 +2087,7 @@ function addEnglishRevision(task) {
         );
 
     if (!exists) {
-
         englishRevision.push(task);
-
     }
 
 }
@@ -2289,18 +2095,14 @@ function addEnglishRevision(task) {
 
 function finishEnglishGame() {
 
-    if (
-        englishRevision.length > 0
-    ) {
+    if (englishRevision.length > 0) {
 
         englishIndex = 0;
 
         hideAll();
 
         document
-            .getElementById(
-                "englishRevision"
-            )
+            .getElementById("englishRevision")
             .classList.add("active");
 
         showEnglishRevision();
@@ -2320,25 +2122,19 @@ function showEnglishRevision() {
         englishRevision[englishIndex];
 
     document
-        .getElementById(
-            "englishRevisionProgress"
-        )
+        .getElementById("englishRevisionProgress")
         .textContent =
         `Powtórka ${englishIndex + 1} z ${englishRevision.length}`;
 
     document
-        .getElementById(
-            "englishRevisionQuestion"
-        )
+        .getElementById("englishRevisionQuestion")
         .textContent =
         englishMode === "numberToWord"
             ? task.number
             : task.word;
 
     document
-        .getElementById(
-            "englishRevisionFeedback"
-        )
+        .getElementById("englishRevisionFeedback")
         .textContent = "";
 
     createEnglishRevisionAnswers(task);
@@ -2355,42 +2151,29 @@ function createEnglishRevisionAnswers(task) {
 
     area.innerHTML = "";
 
-    const answers =
-        new Set();
+    const answers = new Set();
 
     const correctAnswer =
         englishMode === "numberToWord"
             ? task.word
             : task.number;
 
-    answers.add(
-        correctAnswer
-    );
+    answers.add(correctAnswer);
 
 
-    while (
-        answers.size < 4
-    ) {
+    while (answers.size < 4) {
 
-        if (
-            englishMode === "numberToWord"
-        ) {
+        if (englishMode === "numberToWord") {
 
             const number =
-                Math.floor(
-                    Math.random() * 100
-                ) + 1;
+                Math.floor(Math.random() * 100) + 1;
 
-            answers.add(
-                numberWords[number]
-            );
+            answers.add(numberWords[number]);
 
         } else {
 
             answers.add(
-                Math.floor(
-                    Math.random() * 100
-                ) + 1
+                Math.floor(Math.random() * 100) + 1
             );
 
         }
@@ -2399,15 +2182,11 @@ function createEnglishRevisionAnswers(task) {
 
 
     Array.from(answers)
-        .sort(
-            () => Math.random() - 0.5
-        )
+        .sort(() => Math.random() - 0.5)
         .forEach(answer => {
 
             const button =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
             button.className =
                 "answer-button";
@@ -2417,11 +2196,7 @@ function createEnglishRevisionAnswers(task) {
 
             button.onclick = () => {
 
-                checkEnglishRevision(
-                    answer
-                );
-
-                clearButtonFocus();
+                checkEnglishRevision(answer);
 
             };
 
@@ -2448,9 +2223,7 @@ function checkEnglishRevision(answer) {
         );
 
 
-    if (
-        answer === correctAnswer
-    ) {
+    if (answer === correctAnswer) {
 
         feedback.textContent =
             "✅ Dobrze!";
@@ -2464,9 +2237,7 @@ function checkEnglishRevision(answer) {
                 "#englishRevisionAnswers button"
             )
             .forEach(btn => {
-
                 btn.disabled = true;
-
             });
 
 
@@ -2478,13 +2249,9 @@ function checkEnglishRevision(answer) {
                 englishIndex <
                 englishRevision.length
             ) {
-
                 showEnglishRevision();
-
             } else {
-
                 showEnglishSummary();
-
             }
 
         }, 700);
@@ -2499,7 +2266,6 @@ function checkEnglishRevision(answer) {
             "feedback wrong";
 
     }
-
 
     clearButtonFocus();
 
@@ -2526,9 +2292,7 @@ function showEnglishSummary() {
             <p>
                 Poprawnych odpowiedzi
                 w pierwszym podejściu:
-                <strong>
-                    ${englishCorrect}
-                </strong>.
+                <strong>${englishCorrect}</strong>.
             </p>
 
         `;
@@ -2541,20 +2305,15 @@ function showEnglishSummary() {
 ===================================================== */
 
 let mathPrepMode = "";
-
 let mathPrepCorrect = 0;
-
 let mathPrepTotal = 0;
-
 let mathPrepCurrentTask = null;
 
 
 /*
-    Zapamiętujemy ostatnie zadanie
-    z każdego modułu.
-
+    Zapamiętujemy ostatnie zadanie.
     Dzięki temu po ponownym wejściu
-    pierwsze zadanie nie będzie takie samo.
+    nie pojawi się od razu dokładnie to samo.
 */
 
 const lastMathPrepTasks = {
@@ -2562,13 +2321,12 @@ const lastMathPrepTasks = {
     elapsed: null,
     operations: null,
     missing: null,
-    addend: null,
     word: null
 };
 
 
 /* =====================================================
-   MENU PRZYGOTOWANIA
+   MENU
 ===================================================== */
 
 function showMathPrepMenu() {
@@ -2583,17 +2341,14 @@ function showMathPrepMenu() {
 
 
 /* =====================================================
-   START AKTYWNOŚCI
+   START
 ===================================================== */
 
 function startMathPrep(mode) {
 
     mathPrepMode = mode;
-
     mathPrepCorrect = 0;
-
     mathPrepTotal = 0;
-
     mathPrepCurrentTask = null;
 
     hideAll();
@@ -2617,9 +2372,6 @@ function startMathPrep(mode) {
         missing:
             "❓ Brakująca liczba",
 
-        addend:
-            "🔎 Brakujący składnik",
-
         word:
             "📖 Zadania tekstowe"
 
@@ -2632,34 +2384,13 @@ function startMathPrep(mode) {
         titles[mode];
 
 
-    document
-        .getElementById("mathPrepFeedback")
-        .textContent = "";
-
-
-    document
-        .getElementById("clockArea")
-        .style.display =
-        mode === "clock"
-            ? "block"
-            : "none";
-
-
-    document
-        .getElementById("elapsedInputArea")
-        .style.display =
-        mode === "elapsed"
-            ? "block"
-            : "none";
-
-
     generateMathPrepQuestion();
 
 }
 
 
 /* =====================================================
-   LOSOWANIE POMOCNICZE
+   LOSOWANIE
 ===================================================== */
 
 function randomInt(min, max) {
@@ -2671,11 +2402,17 @@ function randomInt(min, max) {
 }
 
 
-function randomTime() {
+/*
+    Czas zegara:
+    co 5 minut.
+*/
+
+function randomClockTime() {
 
     return {
 
-        hour: randomInt(0, 23),
+        hour:
+            randomInt(0, 23),
 
         minute:
             randomInt(0, 11) * 5
@@ -2685,35 +2422,33 @@ function randomTime() {
 }
 
 
-function timeToMinutes(time) {
+/*
+    Czas startowy:
+    również co 5 minut.
+*/
 
-    return (
-        time.hour * 60 +
-        time.minute
-    );
+function randomStartTime() {
 
-}
+    return {
 
+        hour:
+            randomInt(0, 21),
 
-function timeToString(hour, minute) {
+        minute:
+            randomInt(0, 11) * 5
 
-    return (
-        String(hour).padStart(2, "0") +
-        ":" +
-        String(minute).padStart(2, "0")
-    );
+    };
 
 }
 
 
 /* =====================================================
-   GENEROWANIE ZADANIA
+   GENEROWANIE PYTANIA
 ===================================================== */
 
 function generateMathPrepQuestion() {
 
     let task;
-
     let safety = 0;
 
 
@@ -2759,10 +2494,6 @@ function generateMathPrepQuestion() {
         .innerHTML = "";
 
 
-    /*
-        Czyścimy pola czasu.
-    */
-
     document
         .getElementById("elapsedHours")
         .value = "";
@@ -2772,26 +2503,34 @@ function generateMathPrepQuestion() {
         .value = "";
 
 
-    if (
-        mathPrepMode === "clock"
-    ) {
+    /*
+        ZEGAR
+    */
+
+    if (mathPrepMode === "clock") {
 
         setAnalogClock(
             task.hour,
             task.minute
         );
 
-        document
-            .getElementById(
-                "mathPrepQuestion"
-            )
-            .textContent =
-            "Która jest godzina? Zapisz ją w formacie 24-godzinnym, np. 14:25.";
 
         document
-            .getElementById(
-                "mathPrepInputArea"
-            )
+            .getElementById("dayPeriod")
+            .textContent =
+            task.hour < 12
+                ? "🌅 Przed południem — 00:00–11:59"
+                : "☀️ Po południu — 12:00–23:59";
+
+
+        document
+            .getElementById("mathPrepQuestion")
+            .textContent =
+            "Odczytaj godzinę z zegara i zapisz ją w formacie 24-godzinnym.";
+
+
+        document
+            .getElementById("mathPrepInputArea")
             .innerHTML = `
 
                 <input
@@ -2800,53 +2539,68 @@ function generateMathPrepQuestion() {
                     type="text"
                     inputmode="numeric"
                     maxlength="5"
-                    placeholder="HH:MM"
+                    placeholder="np. 13:10"
                     autocomplete="off"
                 >
 
             `;
 
+    }
 
-    } else if (
-        mathPrepMode === "elapsed"
-    ) {
+
+    /*
+        UPŁYW CZASU
+    */
+
+    else if (mathPrepMode === "elapsed") {
 
         document
-            .getElementById(
-                "mathPrepQuestion"
-            )
+            .getElementById("mathPrepQuestion")
             .innerHTML = `
-                Ile czasu minęło od
-                <strong>
-                    ${timeToString(
-                        task.startHour,
-                        task.startMinute
-                    )}
-                </strong>
-                do
-                <strong>
-                    ${timeToString(
-                        task.endHour,
-                        task.endMinute
-                    )}
-                </strong>?
+
+                <div class="time-question">
+
+                    Ile czasu minęło od
+
+                    <span class="time-value">
+                        ${timeToString(
+                            task.startHour,
+                            task.startMinute
+                        )}
+                    </span>
+
+                    do
+
+                    <span class="time-value">
+                        ${timeToString(
+                            task.endHour,
+                            task.endMinute
+                        )}
+                    </span>
+
+                    ?
+
+                </div>
+
             `;
 
+    }
 
-    } else {
+
+    /*
+        POZOSTAŁE
+    */
+
+    else {
 
         document
-            .getElementById(
-                "mathPrepQuestion"
-            )
+            .getElementById("mathPrepQuestion")
             .innerHTML =
             task.question;
 
 
         document
-            .getElementById(
-                "mathPrepInputArea"
-            )
+            .getElementById("mathPrepInputArea")
             .innerHTML = `
 
                 <input
@@ -2895,25 +2649,29 @@ function generateMathPrepQuestion() {
 
 
 /* =====================================================
-   TWORZENIE KONKRETNEGO ZADANIA
+   TWORZENIE ZADAŃ
 ===================================================== */
 
 function createMathPrepTask(mode) {
 
-    /* =========================
+
+    /* =================================================
        ZEGAR
-    ========================= */
+    ================================================= */
 
     if (mode === "clock") {
 
         const time =
-            randomTime();
+            randomClockTime();
+
 
         return {
 
-            hour: time.hour,
+            hour:
+                time.hour,
 
-            minute: time.minute,
+            minute:
+                time.minute,
 
             answer:
                 timeToString(
@@ -2929,40 +2687,100 @@ function createMathPrepTask(mode) {
     }
 
 
-    /* =========================
+    /* =================================================
        UPŁYW CZASU
-    ========================= */
+    ================================================= */
 
     if (mode === "elapsed") {
 
-        const startHour =
-            randomInt(0, 20);
-
-        const startMinute =
-            randomInt(0, 11) * 5;
-
         /*
-            Maksymalnie 3 godziny.
-            Nie przechodzimy przez północ,
-            żeby zadanie było odpowiednie
-            dla klasy 3.
+            Początek zawsze jest co 5 minut.
+
+            Czas trwania również jest
+            wielokrotnością 5 minut.
+
+            Zadania nie przechodzą przez północ.
         */
 
-        const duration =
-            randomInt(10, 180);
+        const start =
+            randomStartTime();
+
+
+        const possibleDurations = [
+
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40,
+            45,
+            50,
+            55,
+            60,
+            65,
+            70,
+            75,
+            80,
+            90,
+            100,
+            105,
+            120,
+            135,
+            150,
+            180
+        ];
+
+
+        let duration =
+            possibleDurations[
+                randomInt(
+                    0,
+                    possibleDurations.length - 1
+                )
+            ];
+
 
         const startTotal =
-            startHour * 60 +
-            startMinute;
+            start.hour * 60 +
+            start.minute;
+
+
+        /*
+            Jeżeli wylosowany czas
+            wyszedłby poza dzień,
+            zmniejszamy go.
+        */
+
+        if (
+            startTotal + duration >
+            23 * 60 + 55
+        ) {
+
+            duration =
+                24 * 60 -
+                5 -
+                startTotal;
+
+            duration =
+                Math.floor(
+                    duration / 5
+                ) * 5;
+
+        }
+
 
         const endTotal =
-            startTotal +
-            duration;
+            startTotal + duration;
+
 
         const endHour =
             Math.floor(
                 endTotal / 60
             );
+
 
         const endMinute =
             endTotal % 60;
@@ -2971,10 +2789,10 @@ function createMathPrepTask(mode) {
         return {
 
             startHour:
-                startHour,
+                start.hour,
 
             startMinute:
-                startMinute,
+                start.minute,
 
             endHour:
                 endHour,
@@ -2991,16 +2809,16 @@ function createMathPrepTask(mode) {
                 duration % 60,
 
             signature:
-                `${startHour}:${startMinute}-${endHour}:${endMinute}`
+                `${start.hour}:${start.minute}-${endHour}:${endMinute}`
 
         };
 
     }
 
 
-    /* =========================
-       DODAWANIE / ODEJMOWANIE
-    ========================= */
+    /* =================================================
+       DODAWANIE I ODEJMOWANIE
+    ================================================= */
 
     if (mode === "operations") {
 
@@ -3015,12 +2833,14 @@ function createMathPrepTask(mode) {
 
         if (addition) {
 
-            a = randomInt(0, 100);
+            a =
+                randomInt(0, 100);
 
-            b = randomInt(
-                0,
-                100 - a
-            );
+            b =
+                randomInt(
+                    0,
+                    100 - a
+                );
 
             answer =
                 a + b;
@@ -3029,12 +2849,11 @@ function createMathPrepTask(mode) {
 
         } else {
 
-            a = randomInt(0, 100);
+            a =
+                randomInt(0, 100);
 
-            b = randomInt(
-                0,
-                a
-            );
+            b =
+                randomInt(0, a);
 
             answer =
                 a - b;
@@ -3060,9 +2879,9 @@ function createMathPrepTask(mode) {
     }
 
 
-    /* =========================
+    /* =================================================
        BRAKUJĄCA LICZBA
-    ========================= */
+    ================================================= */
 
     if (mode === "missing") {
 
@@ -3072,22 +2891,24 @@ function createMathPrepTask(mode) {
         let a;
         let b;
         let result;
-        let question;
         let answer;
+        let question;
 
 
         /*
-            a + ? = result
+            a + □ = wynik
         */
 
         if (type === 1) {
 
-            a = randomInt(0, 80);
+            a =
+                randomInt(0, 80);
 
-            b = randomInt(
-                0,
-                100 - a
-            );
+            b =
+                randomInt(
+                    0,
+                    100 - a
+                );
 
             result =
                 a + b;
@@ -3102,17 +2923,19 @@ function createMathPrepTask(mode) {
 
 
         /*
-            ? + b = result
+            □ + b = wynik
         */
 
         else if (type === 2) {
 
-            b = randomInt(0, 80);
+            b =
+                randomInt(0, 80);
 
-            a = randomInt(
-                0,
-                100 - b
-            );
+            a =
+                randomInt(
+                    0,
+                    100 - b
+                );
 
             result =
                 a + b;
@@ -3127,12 +2950,13 @@ function createMathPrepTask(mode) {
 
 
         /*
-            a − ? = result
+            a − □ = wynik
         */
 
         else if (type === 3) {
 
-            a = randomInt(0, 100);
+            a =
+                randomInt(0, 100);
 
             result =
                 randomInt(0, a);
@@ -3150,7 +2974,7 @@ function createMathPrepTask(mode) {
 
 
         /*
-            ? − b = result
+            □ − b = wynik
         */
 
         else {
@@ -3189,50 +3013,9 @@ function createMathPrepTask(mode) {
     }
 
 
-    /* =========================
-       BRAKUJĄCY SKŁADNIK
-    ========================= */
-
-    if (mode === "addend") {
-
-        const first =
-            randomInt(1, 80);
-
-        const second =
-            randomInt(
-                1,
-                100 - first
-            );
-
-        const sum =
-            first + second;
-
-
-        /*
-            Celowo zapisujemy
-            działanie jako:
-            składnik + □ = suma
-        */
-
-        return {
-
-            question:
-                `${first} + □ = ${sum}`,
-
-            answer:
-                second,
-
-            signature:
-                `${first}+□=${sum}`
-
-        };
-
-    }
-
-
-    /* =========================
+    /* =================================================
        ZADANIA TEKSTOWE
-    ========================= */
+    ================================================= */
 
     if (mode === "word") {
 
@@ -3252,38 +3035,19 @@ function createWordProblem() {
     const problems = [
 
         {
+            type: "normal",
+
             text:
-                "Ola miała 35 naklejek. Dostała od koleżanki jeszcze 24 naklejki. Ile naklejek ma teraz Ola?",
+                "W klasie było 37 uczniów. 18 uczniów wyszło na boisko. Ilu uczniów zostało w klasie?",
 
             answer:
-                59
+                19
         },
 
-        {
-            text:
-                "W bibliotece było 72 książki na półce. Dzieci wypożyczyły 28 książek. Ile książek zostało na półce?",
-
-            answer:
-                44
-        },
 
         {
-            text:
-                "Tata kupił 3 zeszyty po 8 zł każdy. Ile złotych zapłacił za zeszyty?",
+            type: "normal",
 
-            answer:
-                24
-        },
-
-        {
-            text:
-                "Kasia miała 80 zł. Kupiła książkę za 35 zł. Ile pieniędzy jej zostało?",
-
-            answer:
-                45
-        },
-
-        {
             text:
                 "W pudełku było 27 czerwonych klocków i 36 niebieskich klocków. Ile klocków było razem?",
 
@@ -3291,31 +3055,21 @@ function createWordProblem() {
                 63
         },
 
+
         {
+            type: "normal",
+
             text:
-                "Na wycieczkę pojechało 64 uczniów. W pierwszym autobusie pojechało 38 uczniów. Ilu uczniów pojechało drugim autobusem?",
+                "W bibliotece było 72 książki na półce. Dzieci wypożyczyły 28 książek. Ile książek zostało na półce?",
 
             answer:
-                26
+                44
         },
 
-        {
-            text:
-                "Mama miała 50 zł. Kupiła owoce za 18 zł. Ile pieniędzy zostało jej po zakupach?",
-
-            answer:
-                32
-        },
 
         {
-            text:
-                "W koszyku było 46 jabłek. Dołożono jeszcze 19 jabłek. Ile jabłek jest teraz w koszyku?",
+            type: "normal",
 
-            answer:
-                65
-        },
-
-        {
             text:
                 "Antek zebrał 38 kasztanów, a Bartek zebrał o 12 kasztanów więcej. Ile kasztanów zebrał Bartek?",
 
@@ -3323,31 +3077,10 @@ function createWordProblem() {
                 50
         },
 
-        {
-            text:
-                "W sklepie zeszyt kosztuje 7 zł, a ołówek 4 zł. Ile złotych trzeba zapłacić za jeden zeszyt i jeden ołówek?",
-
-            answer:
-                11
-        },
 
         {
-            text:
-                "Na początku lekcji w pudełku było 90 kredek. Dzieci wykorzystały 37 kredek. Ile kredek zostało?",
+            type: "normal",
 
-            answer:
-                53
-        },
-
-        {
-            text:
-                "Zosia miała 26 koralików. Dostała jeszcze 17 koralików. Ile koralików ma teraz?",
-
-            answer:
-                43
-        },
-
-        {
             text:
                 "W sadzie rosło 58 jabłoni i 21 grusz. Ile drzew owocowych rosło w sadzie razem?",
 
@@ -3355,19 +3088,153 @@ function createWordProblem() {
                 79
         },
 
+
         {
+            type: "money",
+
             text:
-                "Piotrek miał 75 punktów. W jednej rundzie stracił 18 punktów. Ile punktów mu zostało?",
+                "Natalka miała 50 zł. Kupiła chipsy za 7 zł i picie za 13,20 zł. Ile pieniędzy jej zostało?",
+
+            answerCents:
+                2980
+        },
+
+
+        {
+            type: "money",
+
+            text:
+                "Kuba miał 100 zł. Kupił książkę za 34,50 zł i zeszyt za 8 zł. Ile pieniędzy mu zostało?",
+
+            answerCents:
+                5750
+        },
+
+
+        {
+            type: "money",
+
+            text:
+                "Ola miała 60 zł. Kupiła sok za 5,50 zł, kanapkę za 12 zł i jabłko za 3,50 zł. Ile pieniędzy jej zostało?",
+
+            answerCents:
+                3900
+        },
+
+
+        {
+            type: "money",
+
+            text:
+                "Tomek miał 50 zł. Kupił bilet za 18 zł i popcorn za 9,50 zł. Ile pieniędzy mu zostało?",
+
+            answerCents:
+                2250
+        },
+
+
+        {
+            type: "money",
+
+            text:
+                "Zosia miała 80 zł. Kupiła książkę za 27,90 zł oraz kredki za 14,50 zł. Ile pieniędzy jej zostało?",
+
+            answerCents:
+                3760
+        },
+
+
+        {
+            type: "money",
+
+            text:
+                "Michał miał 70 zł. Kupił piłkę za 29,90 zł i napój za 4,50 zł. Ile pieniędzy mu zostało?",
+
+            answerCents:
+                3560
+        },
+
+
+        {
+            type: "twoStep",
+
+            text:
+                "Kuba miał 50 zł. Kupił zeszyt za 8 zł i książkę za 23 zł. Ile pieniędzy mu zostało?",
 
             answer:
-                57
+                19
+        },
+
+
+        {
+            type: "twoStep",
+
+            text:
+                "W pudełku było 35 kredek. Mama dołożyła jeszcze 27 kredek, a potem dzieci wykorzystały 18 kredek. Ile kredek zostało?",
+
+            answer:
+                44
+        },
+
+
+        {
+            type: "twoStep",
+
+            text:
+                "W sklepie były 84 jabłka. Rano sprzedano 26, a po południu jeszcze 18. Ile jabłek zostało?",
+
+            answer:
+                40
+        },
+
+
+        {
+            type: "twoStep",
+
+            text:
+                "Ola miała 45 naklejek. Dostała 17 naklejek od koleżanki, a następnie oddała bratu 12. Ile naklejek ma teraz?",
+
+            answer:
+                50
+        },
+
+
+        {
+            type: "twoStep",
+
+            text:
+                "Tata miał 90 zł. Kupił książkę za 25 zł i grę za 18 zł. Ile pieniędzy mu zostało?",
+
+            answer:
+                47
+        },
+
+
+        {
+            type: "twoStepMoney",
+
+            text:
+                "Natalka miała 100 zł. Kupiła chipsy za 7 zł, picie za 13,20 zł i batonik za 4,80 zł. Ile pieniędzy jej zostało?",
+
+            answerCents:
+                7500
+        },
+
+
+        {
+            type: "twoStepMoney",
+
+            text:
+                "Kasia miała 80 zł. Kupiła książkę za 24,50 zł i zeszyt za 7,50 zł. Potem kupiła jeszcze długopis za 4 zł. Ile pieniędzy jej zostało?",
+
+            answerCents:
+                4400
         }
 
     ];
 
 
     let problem;
-
     let safety = 0;
 
 
@@ -3393,6 +3260,50 @@ function createWordProblem() {
     );
 
 
+    /*
+        Zadania pieniężne:
+        odpowiedź jest przechowywana
+        w groszach, aby uniknąć błędów
+        obliczeń zmiennoprzecinkowych.
+    */
+
+    if (
+        problem.type === "money" ||
+        problem.type === "twoStepMoney"
+    ) {
+
+        return {
+
+            question:
+                `
+                    <div class="word-problem">
+                        ${problem.text}
+                    </div>
+
+                    <div class="solution-hint">
+                        Oblicz i wpisz kwotę,
+                        która jest odpowiedzią.
+                    </div>
+
+                    <div class="money-note">
+                        Możesz wpisać np. 29,80 albo 29.80.
+                    </div>
+                `,
+
+            answerCents:
+                problem.answerCents,
+
+            money:
+                true,
+
+            signature:
+                problem.text
+
+        };
+
+    }
+
+
     return {
 
         question:
@@ -3402,13 +3313,15 @@ function createWordProblem() {
                 </div>
 
                 <div class="solution-hint">
-                    Najpierw wykonaj działanie,
-                    a następnie wpisz wynik.
+                    Oblicz i wpisz wynik.
                 </div>
             `,
 
         answer:
             problem.answer,
+
+        money:
+            false,
 
         signature:
             problem.text
@@ -3419,10 +3332,15 @@ function createWordProblem() {
 
 
 /* =====================================================
-   ZEGAR ANALOGOWY
+   ZEGAR
 ===================================================== */
 
 function setAnalogClock(hour, minute) {
+
+    const clock =
+        document.getElementById(
+            "analogClock"
+        );
 
     const hourHand =
         document.getElementById(
@@ -3435,6 +3353,16 @@ function setAnalogClock(hour, minute) {
         );
 
 
+    /*
+        12:00 = 0 stopni
+        3:00 = 90 stopni
+        6:00 = 180 stopni
+        9:00 = 270 stopni
+
+        Wskazówka godzinowa uwzględnia
+        również minuty.
+    */
+
     const hourAngle =
         (
             (hour % 12) * 30
@@ -3443,6 +3371,7 @@ function setAnalogClock(hour, minute) {
             minute * 0.5
         );
 
+
     const minuteAngle =
         minute * 6;
 
@@ -3450,20 +3379,36 @@ function setAnalogClock(hour, minute) {
     hourHand.style.transform =
         `rotate(${hourAngle}deg)`;
 
+
     minuteHand.style.transform =
         `rotate(${minuteAngle}deg)`;
 
 
     /*
-        Ustawiamy liczby na tarczy.
+        Ustawianie cyfr dokładnie
+        na okręgu tarczy.
     */
 
     const numbers =
-        document.querySelectorAll(
+        clock.querySelectorAll(
             ".clock-number"
         );
 
-    const radius = 92;
+
+    const rect =
+        clock.getBoundingClientRect();
+
+    const size =
+        rect.width;
+
+
+    const center =
+        size / 2;
+
+
+    const radius =
+        size * 0.39;
+
 
     numbers.forEach(number => {
 
@@ -3472,32 +3417,30 @@ function setAnalogClock(hour, minute) {
                 number.dataset.number
             );
 
+
         const angle =
-            (
-                value * 30
-            ) -
-            90;
+            (value * 30) - 90;
+
 
         const radians =
             angle * Math.PI / 180;
 
-        const center =
-            window.innerWidth <= 550
-                ? 100
-                : 115;
 
         const x =
             center +
             radius *
             Math.cos(radians);
 
+
         const y =
             center +
             radius *
             Math.sin(radians);
 
+
         number.style.left =
             `${x}px`;
+
 
         number.style.top =
             `${y}px`;
@@ -3508,13 +3451,116 @@ function setAnalogClock(hour, minute) {
 
 
 /* =====================================================
-   SPRAWDZANIE ZADAŃ
+   PARSOWANIE GODZINY
+===================================================== */
+
+function parseTimeInput(value) {
+
+    const text =
+        value.trim();
+
+
+    /*
+        Akceptujemy:
+        13:10
+        7:05
+
+        Nie akceptujemy sekund.
+    */
+
+    const match =
+        text.match(
+            /^(\d{1,2}):(\d{2})$/
+        );
+
+
+    if (!match) {
+        return null;
+    }
+
+
+    const hour =
+        Number(match[1]);
+
+    const minute =
+        Number(match[2]);
+
+
+    if (
+        hour < 0 ||
+        hour > 23 ||
+        minute < 0 ||
+        minute > 59
+    ) {
+
+        return null;
+
+    }
+
+
+    return {
+        hour: hour,
+        minute: minute
+    };
+
+}
+
+
+/* =====================================================
+   PARSOWANIE PIENIĘDZY
+===================================================== */
+
+function parseMoneyToCents(value) {
+
+    let text =
+        value
+            .trim()
+            .replace(/\s/g, "")
+            .replace(",", ".");
+
+
+    /*
+        Akceptujemy np.:
+        29
+        29.8
+        29.80
+        29,80
+    */
+
+    if (
+        !/^\d+(\.\d{1,2})?$/.test(text)
+    ) {
+
+        return null;
+
+    }
+
+
+    const number =
+        Number(text);
+
+
+    if (!Number.isFinite(number)) {
+        return null;
+    }
+
+
+    return Math.round(
+        number * 100
+    );
+
+}
+
+
+/* =====================================================
+   SPRAWDZANIE
 ===================================================== */
 
 function checkMathPrepAnswer() {
 
     const task =
         mathPrepCurrentTask;
+
 
     if (!task) {
         return;
@@ -3524,59 +3570,28 @@ function checkMathPrepAnswer() {
     let correct = false;
 
 
-    /* =========================
+    /* =================================================
        ZEGAR
-    ========================= */
+    ================================================= */
 
-    if (
-        mathPrepMode === "clock"
-    ) {
+    if (mathPrepMode === "clock") {
 
         const input =
             document.getElementById(
                 "mathPrepAnswer"
             );
 
-        const value =
-            input.value.trim();
 
-
-        const match =
-            value.match(
-                /^(\d{1,2}):(\d{2})$/
+        const parsed =
+            parseTimeInput(
+                input.value
             );
 
 
-        if (!match) {
+        if (!parsed) {
 
             showMathPrepFeedback(
-                "❌ Wpisz godzinę w formacie HH:MM, np. 14:25.",
-                false
-            );
-
-            input.focus();
-
-            return;
-
-        }
-
-
-        const hour =
-            Number(match[1]);
-
-        const minute =
-            Number(match[2]);
-
-
-        if (
-            hour < 0 ||
-            hour > 23 ||
-            minute < 0 ||
-            minute > 59
-        ) {
-
-            showMathPrepFeedback(
-                "❌ Podaj prawidłową godzinę w formacie 24-godzinnym.",
+                "❌ Wpisz godzinę w formacie 24-godzinnym, np. 13:10.",
                 false
             );
 
@@ -3588,33 +3603,49 @@ function checkMathPrepAnswer() {
 
 
         correct =
-            hour === task.hour &&
-            minute === task.minute;
+            parsed.hour === task.hour &&
+            parsed.minute === task.minute;
 
     }
 
 
-    /* =========================
+    /* =================================================
        UPŁYW CZASU
-    ========================= */
+    ================================================= */
 
-    else if (
-        mathPrepMode === "elapsed"
-    ) {
+    else if (mathPrepMode === "elapsed") {
+
+        const hoursInput =
+            document.getElementById(
+                "elapsedHours"
+            );
+
+        const minutesInput =
+            document.getElementById(
+                "elapsedMinutes"
+            );
+
+
+        if (
+            hoursInput.value.trim() === "" ||
+            minutesInput.value.trim() === ""
+        ) {
+
+            showMathPrepFeedback(
+                "❌ Podaj liczbę godzin i minut.",
+                false
+            );
+
+            return;
+
+        }
+
 
         const hours =
-            Number(
-                document.getElementById(
-                    "elapsedHours"
-                ).value
-            );
+            Number(hoursInput.value);
 
         const minutes =
-            Number(
-                document.getElementById(
-                    "elapsedMinutes"
-                ).value
-            );
+            Number(minutesInput.value);
 
 
         if (
@@ -3626,7 +3657,7 @@ function checkMathPrepAnswer() {
         ) {
 
             showMathPrepFeedback(
-                "❌ Podaj liczbę godzin i minut.",
+                "❌ Wpisz poprawną liczbę godzin i minut.",
                 false
             );
 
@@ -3642,9 +3673,9 @@ function checkMathPrepAnswer() {
     }
 
 
-    /* =========================
-       POZOSTAŁE
-    ========================= */
+    /* =================================================
+       POZOSTAŁE ZADANIA
+    ================================================= */
 
     else {
 
@@ -3653,11 +3684,9 @@ function checkMathPrepAnswer() {
                 "mathPrepAnswer"
             );
 
-        const value =
-            Number(input.value);
-
 
         if (
+            !input ||
             input.value.trim() === ""
         ) {
 
@@ -3666,18 +3695,73 @@ function checkMathPrepAnswer() {
                 false
             );
 
-            input.focus();
+            if (input) {
+                input.focus();
+            }
 
             return;
 
         }
 
 
-        correct =
-            value === task.answer;
+        /*
+            Zadanie pieniężne.
+        */
+
+        if (task.money) {
+
+            const cents =
+                parseMoneyToCents(
+                    input.value
+                );
+
+
+            if (cents === null) {
+
+                showMathPrepFeedback(
+                    "❌ Wpisz poprawną kwotę, np. 29,80.",
+                    false
+                );
+
+                input.focus();
+
+                return;
+
+            }
+
+
+            correct =
+                cents === task.answerCents;
+
+        }
+
+
+        /*
+            Zwykłe zadanie.
+        */
+
+        else {
+
+            const value =
+                Number(
+                    input.value
+                );
+
+
+            correct =
+                value === task.answer;
+
+        }
 
     }
 
+
+    /*
+        Zadanie zostało sprawdzone.
+        Liczymy je tylko raz,
+        ponieważ po poprawnej odpowiedzi
+        przechodzimy do następnego.
+    */
 
     mathPrepTotal++;
 
@@ -3692,20 +3776,17 @@ function checkMathPrepAnswer() {
         );
 
 
-        document
-            .getElementById(
+        const checkButton =
+            document.getElementById(
                 "mathPrepCheckButton"
-            )
-            .disabled = true;
+            );
+
+        checkButton.disabled = true;
 
 
         setTimeout(() => {
 
-            document
-                .getElementById(
-                    "mathPrepCheckButton"
-                )
-                .disabled = false;
+            checkButton.disabled = false;
 
             generateMathPrepQuestion();
 
@@ -3724,6 +3805,10 @@ function checkMathPrepAnswer() {
 }
 
 
+/* =====================================================
+   FEEDBACK
+===================================================== */
+
 function showMathPrepFeedback(
     text,
     isCorrect
@@ -3734,8 +3819,10 @@ function showMathPrepFeedback(
             "mathPrepFeedback"
         );
 
+
     feedback.textContent =
         text;
+
 
     feedback.className =
         isCorrect
@@ -3746,14 +3833,12 @@ function showMathPrepFeedback(
 
 
 /* =====================================================
-   ZAKOŃCZENIE AKTYWNOŚCI
+   ZAKOŃCZENIE
 ===================================================== */
 
 function finishMathPrep() {
 
-    if (
-        mathPrepTotal === 0
-    ) {
+    if (mathPrepTotal === 0) {
 
         showMathPrepMenu();
 
@@ -3764,10 +3849,9 @@ function finishMathPrep() {
 
     hideAll();
 
+
     document
-        .getElementById(
-            "mathPrepSummary"
-        )
+        .getElementById("mathPrepSummary")
         .classList.add("active");
 
 
@@ -3811,12 +3895,6 @@ function finishMathPrep() {
                 <strong>
                     ${percentage}%
                 </strong>
-            </p>
-
-            <p>
-                Możesz teraz wybrać,
-                czy chcesz ćwiczyć ten temat dalej,
-                czy przejść do innego.
             </p>
 
         `;
@@ -3918,7 +3996,6 @@ const videoQuestions = [
 
 
 let videoIndex = 0;
-
 let videoCorrect = 0;
 
 
@@ -3942,9 +4019,7 @@ function showVideoLesson() {
     hideAll();
 
     document
-        .getElementById(
-            "videoLesson"
-        )
+        .getElementById("videoLesson")
         .classList.add("active");
 
 }
@@ -3953,15 +4028,12 @@ function showVideoLesson() {
 function startVideoQuestions() {
 
     videoIndex = 0;
-
     videoCorrect = 0;
 
     hideAll();
 
     document
-        .getElementById(
-            "videoQuestions"
-        )
+        .getElementById("videoQuestions")
         .classList.add("active");
 
     showVideoQuestion();
@@ -3974,24 +4046,21 @@ function showVideoQuestion() {
     const task =
         videoQuestions[videoIndex];
 
+
     document
-        .getElementById(
-            "videoProgress"
-        )
+        .getElementById("videoProgress")
         .textContent =
         `Pytanie ${videoIndex + 1} z ${videoQuestions.length}`;
 
+
     document
-        .getElementById(
-            "videoQuestion"
-        )
+        .getElementById("videoQuestion")
         .textContent =
         task.question;
 
+
     document
-        .getElementById(
-            "videoFeedback"
-        )
+        .getElementById("videoFeedback")
         .textContent = "";
 
 
@@ -4000,13 +4069,12 @@ function showVideoQuestion() {
             "videoAnswers"
         );
 
+
     area.innerHTML = "";
 
 
-    task.answers
-        .sort(
-            () => Math.random() - 0.5
-        )
+    [...task.answers]
+        .sort(() => Math.random() - 0.5)
         .forEach(answer => {
 
             const button =
@@ -4048,9 +4116,7 @@ function checkVideoAnswer(answer) {
         );
 
 
-    if (
-        answer === task.correct
-    ) {
+    if (answer === task.correct) {
 
         videoCorrect++;
 
@@ -4066,9 +4132,7 @@ function checkVideoAnswer(answer) {
                 "#videoAnswers button"
             )
             .forEach(button => {
-
                 button.disabled = true;
-
             });
 
 
@@ -4113,9 +4177,7 @@ function showVideoSentences() {
     hideAll();
 
     document
-        .getElementById(
-            "videoSentences"
-        )
+        .getElementById("videoSentences")
         .classList.add("active");
 
 
@@ -4123,6 +4185,7 @@ function showVideoSentences() {
         document.getElementById(
             "sentenceList"
         );
+
 
     list.innerHTML = "";
 
@@ -4134,6 +4197,7 @@ function showVideoSentences() {
                 document.createElement(
                     "div"
                 );
+
 
             box.className =
                 "sentence-box";
@@ -4202,6 +4266,7 @@ function speakEnglish(text) {
             text
         );
 
+
     utterance.lang =
         "en-US";
 
@@ -4219,32 +4284,28 @@ function speakEnglish(text) {
 
 
 /* =====================================================
-   ENTER – STARE ĆWICZENIA
+   ENTER
 ===================================================== */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (
-            event.key !== "Enter"
-        ) {
-
+        if (event.key !== "Enter") {
             return;
-
         }
 
 
+        /*
+            Stara tabliczka.
+        */
+
         const game =
-            document.getElementById(
-                "game"
-            );
+            document.getElementById("game");
 
 
         if (
-            game.classList.contains(
-                "active"
-            )
+            game.classList.contains("active")
         ) {
 
             const input =
@@ -4265,16 +4326,16 @@ document.addEventListener(
         }
 
 
+        /*
+            Powtórka tabliczki.
+        */
+
         const revision =
-            document.getElementById(
-                "revision"
-            );
+            document.getElementById("revision");
 
 
         if (
-            revision.classList.contains(
-                "active"
-            )
+            revision.classList.contains("active")
         ) {
 
             const input =
@@ -4296,8 +4357,7 @@ document.addEventListener(
 
 
         /*
-            Enter działa również
-            w nowych ćwiczeniach matematycznych.
+            Nowe ćwiczenia matematyczne.
         */
 
         const mathPrep =
@@ -4307,9 +4367,7 @@ document.addEventListener(
 
 
         if (
-            mathPrep.classList.contains(
-                "active"
-            )
+            mathPrep.classList.contains("active")
         ) {
 
             if (
@@ -4362,7 +4420,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   USTAWIENIE NUMERÓW NA ZEGARZE
+   ZMIANA ROZMIARU OKNA
 ===================================================== */
 
 window.addEventListener(
@@ -4370,20 +4428,14 @@ window.addEventListener(
     function() {
 
         if (
-            mathPrepMode === "clock"
+            mathPrepMode === "clock" &&
+            mathPrepCurrentTask
         ) {
 
-            const task =
-                mathPrepCurrentTask;
-
-            if (task) {
-
-                setAnalogClock(
-                    task.hour,
-                    task.minute
-                );
-
-            }
+            setAnalogClock(
+                mathPrepCurrentTask.hour,
+                mathPrepCurrentTask.minute
+            );
 
         }
 
@@ -4391,18 +4443,20 @@ window.addEventListener(
 );
 
 
-/*
-    Przy pierwszym załadowaniu
-    również ustawiamy pozycje numerów.
-*/
+/* =====================================================
+   STARTOWE USTAWIENIE ZEGARA
+===================================================== */
 
-setAnalogClock(
-    12,
-    0
+window.addEventListener(
+    "load",
+    function() {
+
+        setAnalogClock(12, 0);
+
+    }
 );
 
 </script>
 
 </body>
 </html>
-```
